@@ -5,17 +5,25 @@ import Button from './Button.jsx';
 import Input from './Input.jsx';
 import MemberFormModal from './MemberFormModal.jsx';
 
-export default function MembersTable({ groupId, members, onAddMember, onUpdateMember, onDeleteMember }) {
+const PREVIEW_LIMIT = 5;
+
+export default function MembersTable({ groupId, members, totalMembers, onAddMember, onUpdateMember, onDeleteMember }) {
   const [query, setQuery] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const [editingMember, setEditingMember] = useState(null);
   const [memberToDelete, setMemberToDelete] = useState(null);
   const [message, setMessage] = useState('');
 
-  const filtered = useMemo(() => {
+  const visibleMembers = useMemo(() => {
     const text = query.toLowerCase();
-    return members.filter((member) => `${member.firstName} ${member.lastName} ${member.email} ${member.phone}`.toLowerCase().includes(text));
+    const matches = members.filter((member) => `${member.firstName} ${member.lastName} ${member.email} ${member.phone}`.toLowerCase().includes(text));
+    return text ? matches : matches.slice(0, PREVIEW_LIMIT);
   }, [members, query]);
+
+  const displayTotal = totalMembers || members.length;
+  const summary = query
+    ? `${visibleMembers.length} resultado${visibleMembers.length === 1 ? '' : 's'} encontrados`
+    : `Ultimos ${Math.min(PREVIEW_LIMIT, members.length)} registros de ${displayTotal} integrantes`;
 
   const closeModal = (toast) => {
     setModalOpen(false);
@@ -43,7 +51,8 @@ export default function MembersTable({ groupId, members, onAddMember, onUpdateMe
     <section className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-xl font-black text-lbc-ink">Integrantes</h2>
+          <h2 className="text-xl font-black text-lbc-ink">Ultimos integrantes registrados</h2>
+          <p className="mt-1 text-sm font-semibold text-lbc-blue/70">{summary}</p>
         </div>
         <Button onClick={openCreateModal}>
           <Plus className="h-4 w-4" />
@@ -58,7 +67,7 @@ export default function MembersTable({ groupId, members, onAddMember, onUpdateMe
         </div>
       </div>
       <div className="mt-5 grid gap-3 lg:hidden">
-        {filtered.map((member) => (
+        {visibleMembers.map((member) => (
           <article key={member.id} className="rounded-2xl border border-slate-100 p-3">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
@@ -111,7 +120,7 @@ export default function MembersTable({ groupId, members, onAddMember, onUpdateMe
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
-            {filtered.map((member) => (
+            {visibleMembers.map((member) => (
               <tr key={member.id} className="bg-white">
                 <td className="px-4 py-4 font-bold text-lbc-ink">
                   {member.firstName} {member.lastName}
@@ -147,7 +156,7 @@ export default function MembersTable({ groupId, members, onAddMember, onUpdateMe
           </tbody>
         </table>
       </div>
-      {filtered.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No se encontraron integrantes con esos criterios.</p>}
+      {visibleMembers.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No se encontraron integrantes con esos criterios.</p>}
       {modalOpen && (
         <MemberFormModal
           groupId={groupId}

@@ -93,6 +93,7 @@ export default function GroupDetailPage({ data, onUpdateGroup, onToggleGroupStat
         <MembersTable
           groupId={group.id}
           members={members}
+          totalMembers={group.memberCount}
           onAddMember={onAddMember}
           onUpdateMember={onUpdateMember}
           onDeleteMember={onDeleteMember}
