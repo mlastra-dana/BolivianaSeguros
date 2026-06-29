@@ -33,9 +33,8 @@ export default function GroupsPage({ data, onAddGroup }) {
       <section className="rounded-3xl bg-white p-6 shadow-pill">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
           <div>
-            <h2 className="text-4xl font-black text-lbc-ink">Grupos de distribucion</h2>
+            <h2 className="text-4xl font-black text-lbc-ink">Grupos</h2>
             <div className="mt-3 h-1.5 w-24 rounded-full bg-lbc-green" />
-            <p className="mt-4 max-w-3xl text-lbc-blue">Cada grupo tiene un unico producto asegurador, un corredor responsable y su propio QR de afiliacion.</p>
           </div>
           <Button onClick={() => setModalOpen(true)}>
             <Plus className="h-4 w-4" />

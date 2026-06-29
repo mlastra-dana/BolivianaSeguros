@@ -24,8 +24,7 @@ export default function MembersTable({ groupId, members, onAddMember }) {
     <section className="rounded-3xl bg-white p-6 shadow-pill">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-2xl font-black text-lbc-ink">Integrantes del grupo</h2>
-          <p className="mt-1 text-sm text-lbc-blue">Cada integrante pertenece a este grupo y se gestiona en una etapa comercial.</p>
+          <h2 className="text-2xl font-black text-lbc-ink">Integrantes</h2>
         </div>
         <Button onClick={() => setModalOpen(true)}>
           <Plus className="h-4 w-4" />

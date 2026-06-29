@@ -72,7 +72,7 @@ export default function AppLayout({ onLogout }) {
               <Menu className="h-5 w-5" />
             </button>
             <div>
-              <p className="text-xs font-bold uppercase text-lbc-blue/60">Gestion centralizada de comunidades asegurables</p>
+              <p className="text-xs font-bold uppercase text-lbc-blue/60">La Boliviana Ciacruz</p>
               <h1 className="text-xl font-black text-lbc-ink md:text-2xl">{sectionTitle}</h1>
             </div>
           </div>

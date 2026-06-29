@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, CalendarDays, MapPin, ShieldCheck, UserRound } from 'lucide-react';
+import { ArrowRight, CalendarDays, MapPin, UserRound } from 'lucide-react';
 import Badge from './Badge.jsx';
 
 export default function GroupCard({ group, broker }) {
   return (
-    <article className="flex min-h-[360px] flex-col rounded-3xl bg-lbc-blue p-6 text-white shadow-soft">
+    <article className="flex min-h-[320px] flex-col rounded-3xl bg-lbc-blue p-6 text-white shadow-soft">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="text-2xl font-black leading-tight text-white">{group.name}</h3>
@@ -12,7 +12,7 @@ export default function GroupCard({ group, broker }) {
         </div>
         <Badge>{group.status}</Badge>
       </div>
-      <p className="mt-5 min-h-20 text-base font-medium leading-7 text-white/80">{group.description}</p>
+      <p className="mt-5 text-base font-medium leading-7 text-white/80">{group.description}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         <Badge>{group.policyType}</Badge>
       </div>
@@ -28,10 +28,6 @@ export default function GroupCard({ group, broker }) {
         <div className="flex items-center gap-2">
           <CalendarDays className="h-4 w-4 text-white" />
           <span>Creado el {group.createdAt}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="h-4 w-4 text-white" />
-          <span>Producto asegurador unico por grupo</span>
         </div>
       </dl>
       <Link

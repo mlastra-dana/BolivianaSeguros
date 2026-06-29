@@ -14,20 +14,19 @@ export default function DashboardPage({ data }) {
       <section className="relative overflow-hidden rounded-3xl bg-lbc-blue p-8 text-white shadow-soft md:p-10">
         <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(20,26,45,0.12),rgba(20,26,45,0.42))]" />
         <div className="relative">
-        <p className="text-sm font-bold uppercase tracking-wide text-white/70">Demo comercial LBC</p>
-        <h2 className="mt-3 max-w-4xl text-4xl font-black leading-tight md:text-5xl">Gestion centralizada de comunidades asegurables</h2>
+        <p className="text-sm font-bold uppercase tracking-wide text-white/70">La Boliviana Ciacruz</p>
+        <h2 className="mt-3 max-w-4xl text-4xl font-black leading-tight md:text-5xl">Grupos asegurables</h2>
         <div className="mt-5 h-1.5 w-28 rounded-full bg-lbc-green" />
-        <p className="mt-6 max-w-3xl text-lg font-medium leading-8 text-white/75">Administra grupos, afiliaciones digitales por QR y oportunidades comerciales asociadas a un unico producto asegurador por comunidad.</p>
         </div>
       </section>
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard icon={UsersRound} label="Total de grupos activos" value={activeGroups.length} detail="Canales comerciales habilitados" />
-        <StatCard icon={UserCheck} label="Total de integrantes" value={formatNumber(totalMembers)} detail="Personas afiliadas a grupos" tone="blue" />
-        <StatCard icon={Home} label="Polizas de hogar" value={policyCount('Seguro de Hogar')} detail="Grupos con producto hogar" tone="green" />
-        <StatCard icon={Car} label="Polizas de auto" value={policyCount('Seguro de Automovil')} detail="Comunidades de conductores" tone="amber" />
-        <StatCard icon={HeartPulse} label="Polizas de vida" value={policyCount('Seguro de Vida')} detail="Programas familiares y empresas" />
-        <StatCard icon={Activity} label="Nuevas afiliaciones del mes" value={monthAffiliations} detail="Registros digitales recientes" tone="blue" />
-        <StatCard icon={ShieldCheck} label="Corredores activos" value={data.brokers.length} detail="Responsables comerciales" tone="green" />
+        <StatCard icon={UsersRound} label="Grupos activos" value={activeGroups.length} />
+        <StatCard icon={UserCheck} label="Integrantes" value={formatNumber(totalMembers)} tone="blue" />
+        <StatCard icon={Home} label="Hogar" value={policyCount('Seguro de Hogar')} tone="green" />
+        <StatCard icon={Car} label="Auto" value={policyCount('Seguro de Automovil')} tone="amber" />
+        <StatCard icon={HeartPulse} label="Vida" value={policyCount('Seguro de Vida')} />
+        <StatCard icon={Activity} label="Afiliaciones del mes" value={monthAffiliations} tone="blue" />
+        <StatCard icon={ShieldCheck} label="Corredores" value={data.brokers.length} tone="green" />
       </section>
       <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <article className="rounded-3xl bg-white p-6 shadow-pill">

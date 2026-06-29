@@ -31,11 +31,7 @@ export default function PublicAffiliationPage({ groups }) {
             <ShieldCheck className="h-10 w-10 text-white" />
             <h1 className="mt-5 text-4xl font-black leading-tight">{group.name}</h1>
             <div className="mt-5 h-1.5 w-24 rounded-full bg-lbc-green" />
-            <p className="mt-6 text-lg font-medium leading-8 text-white/75">Afiliacion digital para participar en el programa asociado a {group.policyType}.</p>
-            <div className="mt-8 rounded-3xl border border-white/15 bg-white/10 p-5">
-              <p className="font-black">Beneficio del grupo</p>
-              <p className="mt-2 text-sm leading-6 text-white/76">Completa tus datos para que un corredor de La Boliviana Ciacruz pueda contactarte y brindarte mas informacion.</p>
-            </div>
+            <p className="mt-6 text-lg font-medium leading-8 text-white/75">{group.policyType}</p>
           </div>
           <div className="p-6 md:p-10">
             {sent ? (
@@ -67,7 +63,6 @@ export default function PublicAffiliationPage({ groups }) {
                   <input className="mt-1 h-4 w-4 accent-blue-600" type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} />
                   Acepto los terminos de afiliacion y autorizo el contacto comercial de La Boliviana Ciacruz.
                 </label>
-                {!accepted && <p className="mt-3 text-sm font-semibold text-slate-500">Acepta los terminos para completar la afiliacion.</p>}
                 <Button className="mt-6 w-full" type="submit" disabled={!accepted}>Afiliarme al grupo</Button>
               </form>
             )}

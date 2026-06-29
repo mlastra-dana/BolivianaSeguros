@@ -15,9 +15,8 @@ export default function ReportsPage({ data }) {
   return (
     <div className="space-y-6">
       <section className="rounded-3xl bg-white p-6 shadow-pill">
-        <h2 className="text-4xl font-black text-lbc-ink">Reportes comerciales</h2>
+        <h2 className="text-4xl font-black text-lbc-ink">Reportes</h2>
         <div className="mt-3 h-1.5 w-24 rounded-full bg-lbc-green" />
-        <p className="mt-4 text-lbc-blue">Vista ejecutiva de grupos, integrantes, afiliaciones recientes y conversion simulada.</p>
       </section>
       <section className="grid gap-6 xl:grid-cols-2">
         <ReportCard title="Grupos por tipo de poliza" items={policyGroups} max={Math.max(...policyGroups.map((item) => item.value), 1)} />

@@ -20,9 +20,6 @@ export default function QRCard({ group, onCopy }) {
   return (
     <article className="rounded-3xl bg-white p-6 shadow-pill">
       <h2 className="text-2xl font-black text-lbc-ink">QR de afiliacion</h2>
-      <p className="mt-3 text-sm leading-6 text-lbc-blue">
-        Comparte este codigo QR para que nuevos integrantes puedan afiliarse digitalmente al grupo y participar en el programa asociado a {group.policyType}.
-      </p>
       <div className="mt-5 flex flex-col items-center rounded-3xl bg-lbc-gray p-6">
         <QRGrid seed={group.slug} />
         <p className="mt-4 break-all text-center text-xs font-bold text-lbc-blue">{url}</p>
