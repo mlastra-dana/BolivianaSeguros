@@ -3,12 +3,29 @@ import { X } from 'lucide-react';
 import Button from './Button.jsx';
 import Input from './Input.jsx';
 
-export default function MemberFormModal({ groupId, onClose, onAddMember }) {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', gender: 'Femenino', age: '' });
+export default function MemberFormModal({ groupId, member, onClose, onAddMember, onUpdateMember }) {
+  const isEditing = Boolean(member);
+  const [form, setForm] = useState({
+    firstName: member?.firstName || '',
+    lastName: member?.lastName || '',
+    email: member?.email || '',
+    phone: member?.phone || '',
+    gender: member?.gender || 'Femenino',
+    age: member?.age || '',
+  });
   const update = (field, value) => setForm((current) => ({ ...current, [field]: value }));
 
   const submit = (event) => {
     event.preventDefault();
+    if (isEditing) {
+      onUpdateMember(groupId, member.id, {
+        ...form,
+        age: Number(form.age),
+      });
+      onClose('Integrante actualizado correctamente.');
+      return;
+    }
+
     onAddMember(groupId, {
       id: `${groupId}-m-${Date.now()}`,
       ...form,
@@ -23,7 +40,7 @@ export default function MemberFormModal({ groupId, onClose, onAddMember }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4">
       <form onSubmit={submit} className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-soft">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-black text-lbc-ink">Agregar integrante</h2>
+          <h2 className="text-2xl font-black text-lbc-ink">{isEditing ? 'Editar integrante' : 'Agregar integrante'}</h2>
           <button type="button" className="rounded-full p-2 text-slate-500 hover:bg-slate-100" onClick={() => onClose()} aria-label="Cerrar">
             <X className="h-5 w-5" />
           </button>
@@ -45,7 +62,7 @@ export default function MemberFormModal({ groupId, onClose, onAddMember }) {
         </div>
         <div className="mt-6 flex justify-end gap-3">
           <Button type="button" variant="outline" onClick={() => onClose()}>Cancelar</Button>
-          <Button type="submit">Agregar integrante</Button>
+          <Button type="submit">{isEditing ? 'Guardar cambios' : 'Agregar integrante'}</Button>
         </div>
       </form>
     </div>

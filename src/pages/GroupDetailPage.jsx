@@ -1,22 +1,44 @@
-import { Link, Navigate, useParams } from 'react-router-dom';
-import { ArrowLeft, CalendarDays, MapPin, ShieldCheck, UsersRound } from 'lucide-react';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { ArrowLeft, CalendarDays, Edit3, MapPin, Power, ShieldCheck, Trash2, UsersRound, X } from 'lucide-react';
+import { useState } from 'react';
 import Badge from '../components/Badge.jsx';
 import BrokerCard from '../components/BrokerCard.jsx';
+import Button from '../components/Button.jsx';
+import GroupFormModal from '../components/GroupFormModal.jsx';
 import MembersTable from '../components/MembersTable.jsx';
 import QRCard from '../components/QRCard.jsx';
 
-export default function GroupDetailPage({ data, onAddMember }) {
+export default function GroupDetailPage({ data, onUpdateGroup, onToggleGroupStatus, onDeleteGroup, onAddMember, onUpdateMember, onDeleteMember }) {
   const { groupId } = useParams();
+  const navigate = useNavigate();
+  const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const group = data.groups.find((item) => item.id === groupId);
   if (!group) return <Navigate to="/groups" replace />;
 
   const broker = data.brokers.find((item) => item.id === group.brokerId);
-  const assignedGroups = data.groups.filter((item) => item.brokerId === broker.id).length;
+  const assignedGroups = data.groups.filter((item) => item.brokerId === broker?.id).length;
   const members = data.membersByGroup[group.id] || [];
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(group.location)}`;
 
   const showToast = (text) => {
     const event = new CustomEvent('lbc-toast', { detail: text });
     window.dispatchEvent(event);
+  };
+
+  const closeEdit = (toast) => {
+    setEditOpen(false);
+    if (toast) showToast(toast);
+  };
+
+  const handleToggleStatus = () => {
+    onToggleGroupStatus(group.id);
+    showToast(group.status === 'Activo' ? 'Grupo desactivado correctamente.' : 'Grupo activado correctamente.');
+  };
+
+  const handleDelete = () => {
+    onDeleteGroup(group.id);
+    navigate('/groups');
   };
 
   return (
@@ -37,16 +59,30 @@ export default function GroupDetailPage({ data, onAddMember }) {
             <div className="mt-4 h-1.5 w-24 rounded-full bg-lbc-green" />
             <p className="mt-5 max-w-3xl leading-7 text-lbc-blue">{group.description}</p>
           </div>
-          <div className="rounded-3xl bg-lbc-blue px-6 py-5 text-white">
-            <p className="text-sm font-bold text-white/70">Producto asegurador asociado</p>
-            <p className="text-xl font-black">{group.policyType}</p>
+          <div className="flex flex-wrap gap-3">
+            <Button type="button" onClick={() => setEditOpen(true)}>
+              <Edit3 className="h-4 w-4" />
+              Editar
+            </Button>
+            <Button type="button" variant="outline" onClick={handleToggleStatus}>
+              <Power className="h-4 w-4" />
+              {group.status === 'Activo' ? 'Desactivar' : 'Activar'}
+            </Button>
+            <Button type="button" variant="outline" className="text-red-600 hover:border-red-400 hover:text-red-600" onClick={() => setDeleteOpen(true)}>
+              <Trash2 className="h-4 w-4" />
+              Eliminar
+            </Button>
           </div>
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           <Info icon={ShieldCheck} label="Categoria" value={group.category} />
-          <Info icon={MapPin} label="Ubicacion" value={group.location} />
+          <Info icon={ShieldCheck} label="Poliza asociada" value={group.policyType} />
           <Info icon={CalendarDays} label="Fecha de creacion" value={group.createdAt} />
           <Info icon={UsersRound} label="Integrantes" value={group.memberCount} />
+        </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <Info icon={MapPin} label="Ubicacion" value={group.location} href={mapsUrl} />
+          <Info icon={ShieldCheck} label="Corredor responsable" value={broker?.name || 'Sin asignar'} />
         </div>
       </section>
       <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
@@ -54,18 +90,65 @@ export default function GroupDetailPage({ data, onAddMember }) {
           <QRCard group={group} onCopy={showToast} />
           <BrokerCard broker={broker} assignedGroups={assignedGroups} />
         </div>
-        <MembersTable groupId={group.id} members={members} onAddMember={onAddMember} />
+        <MembersTable
+          groupId={group.id}
+          members={members}
+          onAddMember={onAddMember}
+          onUpdateMember={onUpdateMember}
+          onDeleteMember={onDeleteMember}
+        />
       </section>
+      {editOpen && (
+        <GroupFormModal
+          brokers={data.brokers}
+          group={group}
+          onUpdateGroup={onUpdateGroup}
+          onClose={closeEdit}
+        />
+      )}
+      {deleteOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4">
+          <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-soft">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-black text-lbc-ink">Eliminar grupo</h2>
+                <p className="mt-2 text-sm text-slate-600">{group.name}</p>
+              </div>
+              <button type="button" className="rounded-full p-2 text-slate-500 hover:bg-slate-100" onClick={() => setDeleteOpen(false)} aria-label="Cerrar">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="mt-6 flex justify-end gap-3">
+              <Button type="button" variant="outline" onClick={() => setDeleteOpen(false)}>Cancelar</Button>
+              <Button type="button" className="bg-red-600 hover:bg-red-700" onClick={handleDelete}>Eliminar</Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function Info({ icon: Icon, label, value }) {
-  return (
-    <div className="rounded-2xl bg-lbc-gray p-4">
+function Info({ icon: Icon, label, value, href }) {
+  const content = (
+    <>
       <Icon className="h-5 w-5 text-blue-600" />
       <p className="mt-3 text-xs font-bold uppercase text-lbc-blue/55">{label}</p>
       <p className="mt-1 font-black text-lbc-ink">{value}</p>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a className="rounded-2xl bg-lbc-gray p-4 transition hover:bg-blue-50" href={href} target="_blank" rel="noreferrer">
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <div className="rounded-2xl bg-lbc-gray p-4">
+      {content}
     </div>
   );
 }

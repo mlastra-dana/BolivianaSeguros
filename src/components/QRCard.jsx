@@ -1,27 +1,44 @@
+import { useEffect, useState } from 'react';
 import { Copy, Download, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import QRCode from 'qrcode';
 import Button from './Button.jsx';
-
-function QRGrid({ seed }) {
-  const cells = Array.from({ length: 121 }, (_, index) => {
-    const isCorner =
-      (index < 33 && index % 11 < 3) ||
-      (index < 33 && index % 11 > 7) ||
-      (index > 87 && index % 11 < 3);
-    const active = isCorner || ((index * 17 + seed.length * 13 + seed.charCodeAt(index % seed.length)) % 5 < 2);
-    return <span key={index} className={`aspect-square rounded-[2px] ${active ? 'bg-lbc-ink' : 'bg-white'}`} />;
-  });
-  return <div className="grid w-40 grid-cols-11 gap-1 rounded-2xl border-8 border-white bg-white shadow-inner">{cells}</div>;
-}
 
 export default function QRCard({ group, onCopy }) {
   const url = `https://lbc.bo/afiliacion/${group.slug}`;
+  const [qrImage, setQrImage] = useState('');
+
+  useEffect(() => {
+    let active = true;
+
+    QRCode.toDataURL(url, {
+      errorCorrectionLevel: 'M',
+      margin: 2,
+      scale: 8,
+      color: {
+        dark: '#000000',
+        light: '#FFFFFF',
+      },
+    }).then((image) => {
+      if (active) setQrImage(image);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [url]);
 
   return (
     <article className="rounded-3xl bg-white p-6 shadow-pill">
       <h2 className="text-2xl font-black text-lbc-ink">QR de afiliacion</h2>
-      <div className="mt-5 flex flex-col items-center rounded-3xl bg-lbc-gray p-6">
-        <QRGrid seed={group.slug} />
+      <div className="mt-5 flex flex-col items-center">
+        <div className="bg-white p-2">
+          {qrImage ? (
+            <img src={qrImage} alt={`QR de afiliacion para ${group.name}`} className="h-64 w-64 object-contain" />
+          ) : (
+            <div className="h-64 w-64 animate-pulse bg-slate-100" />
+          )}
+        </div>
         <p className="mt-4 break-all text-center text-xs font-bold text-lbc-blue">{url}</p>
       </div>
       <div className="mt-5 grid gap-3">

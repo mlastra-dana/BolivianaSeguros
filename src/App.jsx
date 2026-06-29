@@ -34,10 +34,48 @@ export default function App() {
     setMembersByGroup((current) => ({ ...current, [group.id]: [] }));
   };
 
+  const updateGroup = (groupId, updates) => {
+    setGroups((current) => current.map((group) => (group.id === groupId ? { ...group, ...updates } : group)));
+  };
+
+  const toggleGroupStatus = (groupId) => {
+    setGroups((current) =>
+      current.map((group) => (group.id === groupId ? { ...group, status: group.status === 'Activo' ? 'Inactivo' : 'Activo' } : group)),
+    );
+  };
+
+  const deleteGroup = (groupId) => {
+    setGroups((current) => current.filter((group) => group.id !== groupId));
+    setMembersByGroup((current) => {
+      const next = { ...current };
+      delete next[groupId];
+      return next;
+    });
+  };
+
   const addMember = (groupId, member) => {
     setMembersByGroup((current) => ({ ...current, [groupId]: [member, ...(current[groupId] || [])] }));
     setGroups((current) =>
       current.map((group) => (group.id === groupId ? { ...group, memberCount: group.memberCount + 1, monthAffiliations: group.monthAffiliations + 1 } : group)),
+    );
+  };
+
+  const updateMember = (groupId, memberId, updates) => {
+    setMembersByGroup((current) => ({
+      ...current,
+      [groupId]: (current[groupId] || []).map((member) =>
+        member.id === memberId ? { ...member, ...updates, age: Number(updates.age) } : member,
+      ),
+    }));
+  };
+
+  const deleteMember = (groupId, memberId) => {
+    setMembersByGroup((current) => ({
+      ...current,
+      [groupId]: (current[groupId] || []).filter((member) => member.id !== memberId),
+    }));
+    setGroups((current) =>
+      current.map((group) => (group.id === groupId ? { ...group, memberCount: Math.max(0, group.memberCount - 1) } : group)),
     );
   };
 
@@ -49,7 +87,20 @@ export default function App() {
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="/dashboard" element={<DashboardPage data={data} />} />
         <Route path="/groups" element={<GroupsPage data={data} onAddGroup={addGroup} />} />
-        <Route path="/groups/:groupId" element={<GroupDetailPage data={data} onAddMember={addMember} />} />
+        <Route
+          path="/groups/:groupId"
+          element={
+            <GroupDetailPage
+              data={data}
+              onUpdateGroup={updateGroup}
+              onToggleGroupStatus={toggleGroupStatus}
+              onDeleteGroup={deleteGroup}
+              onAddMember={addMember}
+              onUpdateMember={updateMember}
+              onDeleteMember={deleteMember}
+            />
+          }
+        />
         <Route path="/reports" element={<ReportsPage data={data} />} />
       </Route>
       <Route path="*" element={<Navigate to={isAuthenticated ? '/dashboard' : '/login'} replace />} />

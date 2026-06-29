@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { BarChart3, LayoutDashboard, LogOut, Menu, Users, UsersRound, X } from 'lucide-react';
+import { BarChart3, LayoutDashboard, LogOut, Menu, UsersRound, X } from 'lucide-react';
 import { useState } from 'react';
 import BrandMark from './BrandMark.jsx';
 import Button from './Button.jsx';
@@ -7,7 +7,6 @@ import Button from './Button.jsx';
 const navItems = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/groups', label: 'Grupos', icon: UsersRound },
-  { to: '/groups', label: 'Integrantes', icon: Users },
   { to: '/reports', label: 'Reportes', icon: BarChart3 },
 ];
 
@@ -41,7 +40,7 @@ export default function AppLayout({ onLogout }) {
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 rounded-full px-4 py-2.5 text-sm font-bold transition ${
-                  isActive && item.label !== 'Integrantes'
+                  isActive
                     ? 'bg-white text-lbc-ink shadow-sm'
                     : 'text-white/75 hover:bg-white/10 hover:text-white'
                 }`
