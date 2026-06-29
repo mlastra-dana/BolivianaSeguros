@@ -21,18 +21,18 @@ export default function MembersTable({ groupId, members, onAddMember }) {
   };
 
   return (
-    <section className="rounded-lg border border-slate-100 bg-white p-5 shadow-soft">
+    <section className="rounded-3xl bg-white p-6 shadow-pill">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-xl font-bold text-lbc-blue">Integrantes del grupo</h2>
-          <p className="text-sm text-slate-500">Cada integrante pertenece a este grupo y se gestiona en una etapa comercial.</p>
+          <h2 className="text-2xl font-black text-lbc-ink">Integrantes del grupo</h2>
+          <p className="mt-1 text-sm text-lbc-blue">Cada integrante pertenece a este grupo y se gestiona en una etapa comercial.</p>
         </div>
         <Button onClick={() => setModalOpen(true)}>
           <Plus className="h-4 w-4" />
           Agregar integrante
         </Button>
       </div>
-      {message && <div className="mt-4 rounded-md bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">{message}</div>}
+      {message && <div className="mt-4 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700">{message}</div>}
       <div className="mt-5 max-w-md">
         <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-3 h-5 w-5 text-slate-400" />
@@ -41,7 +41,7 @@ export default function MembersTable({ groupId, members, onAddMember }) {
       </div>
       <div className="mt-5 overflow-x-auto">
         <table className="min-w-full divide-y divide-slate-100 text-left text-sm">
-          <thead className="bg-slate-50 text-xs font-bold uppercase text-slate-500">
+          <thead className="bg-lbc-gray text-xs font-bold uppercase text-lbc-blue">
             <tr>
               <th className="px-4 py-3">Nombre</th>
               <th className="px-4 py-3">Correo</th>
@@ -55,7 +55,7 @@ export default function MembersTable({ groupId, members, onAddMember }) {
           <tbody className="divide-y divide-slate-100">
             {filtered.map((member) => (
               <tr key={member.id} className="bg-white">
-                <td className="px-4 py-4 font-semibold text-lbc-blue">{member.firstName} {member.lastName}</td>
+                <td className="px-4 py-4 font-bold text-lbc-ink">{member.firstName} {member.lastName}</td>
                 <td className="px-4 py-4 text-slate-600">{member.email}</td>
                 <td className="px-4 py-4 text-slate-600">{member.phone}</td>
                 <td className="px-4 py-4 text-slate-600">{member.gender}</td>

@@ -9,23 +9,23 @@ function QRGrid({ seed }) {
       (index < 33 && index % 11 > 7) ||
       (index > 87 && index % 11 < 3);
     const active = isCorner || ((index * 17 + seed.length * 13 + seed.charCodeAt(index % seed.length)) % 5 < 2);
-    return <span key={index} className={`aspect-square rounded-[2px] ${active ? 'bg-lbc-blue' : 'bg-white'}`} />;
+    return <span key={index} className={`aspect-square rounded-[2px] ${active ? 'bg-lbc-ink' : 'bg-white'}`} />;
   });
-  return <div className="grid w-40 grid-cols-11 gap-1 rounded-lg border-8 border-white bg-white shadow-inner">{cells}</div>;
+  return <div className="grid w-40 grid-cols-11 gap-1 rounded-2xl border-8 border-white bg-white shadow-inner">{cells}</div>;
 }
 
 export default function QRCard({ group, onCopy }) {
   const url = `https://lbc.bo/afiliacion/${group.slug}`;
 
   return (
-    <article className="rounded-lg border border-slate-100 bg-white p-5 shadow-soft">
-      <h2 className="text-xl font-bold text-lbc-blue">QR de afiliacion</h2>
-      <p className="mt-2 text-sm leading-6 text-slate-600">
+    <article className="rounded-3xl bg-white p-6 shadow-pill">
+      <h2 className="text-2xl font-black text-lbc-ink">QR de afiliacion</h2>
+      <p className="mt-3 text-sm leading-6 text-lbc-blue">
         Comparte este codigo QR para que nuevos integrantes puedan afiliarse digitalmente al grupo y participar en el programa asociado a {group.policyType}.
       </p>
-      <div className="mt-5 flex flex-col items-center rounded-lg bg-slate-50 p-5">
+      <div className="mt-5 flex flex-col items-center rounded-3xl bg-lbc-gray p-6">
         <QRGrid seed={group.slug} />
-        <p className="mt-4 break-all text-center text-xs font-semibold text-slate-500">{url}</p>
+        <p className="mt-4 break-all text-center text-xs font-bold text-lbc-blue">{url}</p>
       </div>
       <div className="mt-5 grid gap-3">
         <Button variant="outline" onClick={() => onCopy(url)}>
@@ -37,7 +37,7 @@ export default function QRCard({ group, onCopy }) {
           Descargar QR
         </Button>
         <Link
-          className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-lbc-blue px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-lbc-blueLight"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700"
           to={`/affiliation/${group.slug}`}
         >
           <ExternalLink className="h-4 w-4" />

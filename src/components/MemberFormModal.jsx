@@ -23,8 +23,8 @@ export default function MemberFormModal({ groupId, onClose, onAddMember }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4">
       <form onSubmit={submit} className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-soft">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-xl font-bold text-lbc-blue">Agregar integrante</h2>
-          <button type="button" className="rounded-md p-2 text-slate-500 hover:bg-slate-100" onClick={() => onClose()} aria-label="Cerrar">
+          <h2 className="text-2xl font-black text-lbc-ink">Agregar integrante</h2>
+          <button type="button" className="rounded-full p-2 text-slate-500 hover:bg-slate-100" onClick={() => onClose()} aria-label="Cerrar">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -35,7 +35,7 @@ export default function MemberFormModal({ groupId, onClose, onAddMember }) {
           <Input label="Telefono" required value={form.phone} onChange={(event) => update('phone', event.target.value)} />
           <label className="block">
             <span className="mb-1.5 block text-sm font-semibold text-slate-700">Genero</span>
-            <select className="h-11 w-full rounded-md border border-slate-200 bg-white px-3 text-sm outline-none focus:border-lbc-red focus:ring-4 focus:ring-red-100" value={form.gender} onChange={(event) => update('gender', event.target.value)}>
+            <select className="h-11 w-full rounded-full border border-slate-200 bg-white px-4 text-sm outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" value={form.gender} onChange={(event) => update('gender', event.target.value)}>
               <option>Femenino</option>
               <option>Masculino</option>
               <option>Prefiero no indicar</option>

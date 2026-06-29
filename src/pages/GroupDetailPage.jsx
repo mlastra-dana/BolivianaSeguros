@@ -22,23 +22,24 @@ export default function GroupDetailPage({ data, onAddMember }) {
   return (
     <div className="space-y-6">
       <ToastListener />
-      <Link to="/groups" className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100">
+      <Link to="/groups" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-bold text-lbc-blue shadow-sm transition hover:text-blue-600">
         <ArrowLeft className="h-4 w-4" />
         Volver a grupos
       </Link>
-      <section className="rounded-lg border border-slate-100 bg-white p-6 shadow-soft">
+      <section className="rounded-3xl bg-white p-6 shadow-pill">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
           <div>
             <div className="flex flex-wrap items-center gap-3">
-              <h2 className="text-3xl font-bold text-lbc-blue">{group.name}</h2>
+              <h2 className="text-4xl font-black text-lbc-ink">{group.name}</h2>
               <Badge>{group.status}</Badge>
               <Badge>{group.policyType}</Badge>
             </div>
-            <p className="mt-4 max-w-3xl leading-7 text-slate-600">{group.description}</p>
+            <div className="mt-4 h-1.5 w-24 rounded-full bg-lbc-green" />
+            <p className="mt-5 max-w-3xl leading-7 text-lbc-blue">{group.description}</p>
           </div>
-          <div className="rounded-lg bg-red-50 px-5 py-4 text-lbc-red">
-            <p className="text-sm font-semibold">Producto asegurador asociado</p>
-            <p className="text-xl font-bold">{group.policyType}</p>
+          <div className="rounded-3xl bg-lbc-blue px-6 py-5 text-white">
+            <p className="text-sm font-bold text-white/70">Producto asegurador asociado</p>
+            <p className="text-xl font-black">{group.policyType}</p>
           </div>
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -61,10 +62,10 @@ export default function GroupDetailPage({ data, onAddMember }) {
 
 function Info({ icon: Icon, label, value }) {
   return (
-    <div className="rounded-lg border border-slate-100 bg-slate-50 p-4">
-      <Icon className="h-5 w-5 text-lbc-red" />
-      <p className="mt-3 text-xs font-bold uppercase text-slate-400">{label}</p>
-      <p className="mt-1 font-bold text-lbc-blue">{value}</p>
+    <div className="rounded-2xl bg-lbc-gray p-4">
+      <Icon className="h-5 w-5 text-blue-600" />
+      <p className="mt-3 text-xs font-bold uppercase text-lbc-blue/55">{label}</p>
+      <p className="mt-1 font-black text-lbc-ink">{value}</p>
     </div>
   );
 }
@@ -81,5 +82,5 @@ function ToastListener() {
       window.setTimeout(() => zone.classList.add('hidden'), 2600);
     });
   }
-  return <div id={id} className="hidden rounded-md bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700" />;
+  return <div id={id} className="hidden rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700" />;
 }
