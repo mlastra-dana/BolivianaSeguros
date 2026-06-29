@@ -58,14 +58,13 @@ export default function LoginPage({ onLogin }) {
           <div className="hidden justify-end text-lg font-bold text-lbc-blue md:flex">Sobre nosotros</div>
         </header>
 
-        <section className="flex flex-1 items-center justify-center py-8 md:py-12">
-          <div className="w-full max-w-xl">
-            <div className="mb-6 text-center">
-              <p className="text-sm font-black uppercase tracking-wide text-blue-600">Plataforma de Gestion de Grupos</p>
-              <h1 className="mt-3 text-3xl font-black leading-tight text-lbc-ink md:text-4xl">Acceso</h1>
-              <div className="mx-auto mt-4 h-1.5 w-20 rounded-full bg-lbc-green" />
-            </div>
+        <section className="flex flex-1 items-center justify-center py-8 md:py-10">
+          <div className="w-full max-w-lg">
             <form onSubmit={submit} className="rounded-3xl border border-slate-100 bg-white p-6 shadow-pill">
+              <div className="mb-5">
+                <h1 className="text-2xl font-black text-lbc-ink">Acceso</h1>
+                <div className="mt-3 h-1 w-14 rounded-full bg-lbc-green" />
+              </div>
               <div className="space-y-4">
                 <Input label="Usuario" type="text" value={email} onChange={(event) => setEmail(event.target.value)} placeholder={ACCESS_USER} />
                 <Input label="Contrasena" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder={ACCESS_PASSWORD} />

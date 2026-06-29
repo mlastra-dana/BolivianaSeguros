@@ -24,23 +24,23 @@ export default function AppLayout({ onLogout }) {
 
   return (
     <div className="min-h-screen bg-lbc-gray text-lbc-ink">
-      <aside className={`fixed inset-y-0 left-0 z-40 w-72 bg-lbc-blue transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="flex h-24 items-center justify-between border-b border-white/10 px-5">
+      <aside className={`fixed inset-y-0 left-0 z-40 w-60 bg-lbc-blue transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="flex h-20 items-center justify-between border-b border-white/10 px-4">
           <Link to="/dashboard" className="min-w-0">
-            <BrandMark inverse compact />
+            <BrandMark inverse size="sm" />
           </Link>
           <button className="rounded-full p-2 text-white lg:hidden" onClick={() => setOpen(false)} aria-label="Cerrar menu">
             <X className="h-5 w-5" />
           </button>
         </div>
-        <nav className="space-y-2 p-4">
+        <nav className="space-y-1.5 p-3">
           {navItems.map((item) => (
             <NavLink
               key={`${item.label}-${item.to}`}
               to={item.to}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-full px-4 py-3 text-sm font-bold transition ${
+                `flex items-center gap-3 rounded-full px-4 py-2.5 text-sm font-bold transition ${
                   isActive && item.label !== 'Integrantes'
                     ? 'bg-white text-lbc-ink shadow-sm'
                     : 'text-white/75 hover:bg-white/10 hover:text-white'
@@ -52,9 +52,9 @@ export default function AppLayout({ onLogout }) {
             </NavLink>
           ))}
         </nav>
-        <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 p-4">
-          <div className="mb-4 rounded-2xl bg-white/10 p-4">
-            <p className="text-sm font-bold text-white">Administrador LBC</p>
+        <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 p-3">
+          <div className="mb-3 rounded-2xl bg-white/10 p-3">
+            <p className="text-sm font-bold text-white">Administrador</p>
             <p className="text-xs text-white/65">administrador</p>
           </div>
           <Button variant="outline" className="w-full" onClick={onLogout}>
@@ -64,24 +64,21 @@ export default function AppLayout({ onLogout }) {
         </div>
       </aside>
 
-      <div className="lg:pl-72">
-        <header className="sticky top-0 z-30 px-4 py-4 md:px-8">
-          <div className="flex min-h-16 items-center justify-between rounded-full bg-white px-4 shadow-pill backdrop-blur md:px-6">
+      <div className="lg:pl-60">
+        <header className="sticky top-0 z-30 px-4 py-3 md:px-6">
+          <div className="flex min-h-14 items-center justify-between rounded-full bg-white px-4 shadow-pill backdrop-blur md:px-5">
           <div className="flex min-w-0 items-center gap-3">
             <button className="rounded-full border border-slate-200 p-2 text-lbc-blue lg:hidden" onClick={() => setOpen(true)} aria-label="Abrir menu">
               <Menu className="h-5 w-5" />
             </button>
-            <div>
-              <p className="text-xs font-bold uppercase text-lbc-blue/60">La Boliviana Ciacruz</p>
-              <h1 className="text-xl font-black text-lbc-ink md:text-2xl">{sectionTitle}</h1>
-            </div>
+            <h1 className="text-lg font-black text-lbc-ink md:text-xl">{sectionTitle}</h1>
           </div>
           <div className="hidden rounded-full px-4 py-2 text-sm font-bold text-lbc-ink md:block">
-            Administrador LBC
+            Administrador
           </div>
           </div>
         </header>
-        <main className="p-4 pt-2 md:p-8 md:pt-4">
+        <main className="p-4 pt-2 md:p-6 md:pt-3">
           <Outlet />
         </main>
       </div>

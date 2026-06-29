@@ -7,16 +7,16 @@ export default function StatCard({ icon: Icon, label, value, detail, tone = 'red
   };
 
   return (
-    <article className="rounded-2xl bg-lbc-blue p-5 text-white shadow-soft">
-      <div className="flex items-start justify-between gap-4">
+    <article className="rounded-2xl bg-lbc-blue p-4 text-white shadow-soft">
+      <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-semibold text-white/75">{label}</p>
-          <p className="mt-2 text-3xl font-black text-white">{value}</p>
+          <p className="mt-1.5 text-2xl font-black text-white">{value}</p>
           {detail && <p className="mt-2 text-sm leading-5 text-white/70">{detail}</p>}
         </div>
         {Icon && (
-          <div className={`rounded-full p-3 ${tones[tone]}`}>
-            <Icon className="h-5 w-5" />
+          <div className={`rounded-full p-2.5 ${tones[tone]}`}>
+            <Icon className="h-4 w-4" />
           </div>
         )}
       </div>
