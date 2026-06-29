@@ -55,7 +55,7 @@ export default function AppLayout({ onLogout }) {
         <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 p-4">
           <div className="mb-4 rounded-2xl bg-white/10 p-4">
             <p className="text-sm font-bold text-white">Administrador LBC</p>
-            <p className="text-xs text-white/65">admin@lbc.bo</p>
+            <p className="text-xs text-white/65">administrador</p>
           </div>
           <Button variant="outline" className="w-full" onClick={onLogout}>
             <LogOut className="h-4 w-4" />
