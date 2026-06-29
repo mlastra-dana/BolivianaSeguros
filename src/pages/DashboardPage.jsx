@@ -10,15 +10,15 @@ export default function DashboardPage({ data }) {
   const monthAffiliations = data.groups.reduce((sum, group) => sum + group.monthAffiliations, 0);
 
   return (
-    <div className="space-y-5">
-      <section className="relative overflow-hidden rounded-3xl bg-lbc-blue p-5 text-white shadow-soft md:p-6">
+    <div className="space-y-4">
+      <section className="relative overflow-hidden rounded-3xl bg-lbc-blue p-4 text-white shadow-soft md:p-5">
         <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(20,26,45,0.12),rgba(20,26,45,0.42))]" />
         <div className="relative">
-        <h2 className="max-w-4xl text-3xl font-black leading-tight md:text-4xl">Grupos asegurables</h2>
-        <div className="mt-4 h-1 w-20 rounded-full bg-lbc-green" />
+        <h2 className="max-w-4xl text-2xl font-black leading-tight md:text-3xl">Grupos asegurables</h2>
+        <div className="mt-3 h-1 w-16 rounded-full bg-lbc-green" />
         </div>
       </section>
-      <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={UsersRound} label="Grupos activos" value={activeGroups.length} />
         <StatCard icon={UserCheck} label="Integrantes" value={formatNumber(totalMembers)} tone="blue" />
         <StatCard icon={Home} label="Hogar" value={policyCount('Seguro de Hogar')} tone="green" />
@@ -27,8 +27,8 @@ export default function DashboardPage({ data }) {
         <StatCard icon={Activity} label="Afiliaciones del mes" value={monthAffiliations} tone="blue" />
         <StatCard icon={ShieldCheck} label="Corredores" value={data.brokers.length} tone="green" />
       </section>
-      <section className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr]">
-        <article className="rounded-3xl bg-white p-5 shadow-pill">
+      <section className="grid min-w-0 gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+        <article className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
           <h3 className="text-xl font-black text-lbc-ink">Grupos por volumen de integrantes</h3>
           <div className="mt-5 space-y-3">
             {data.groups.map((group) => (
@@ -44,7 +44,7 @@ export default function DashboardPage({ data }) {
             ))}
           </div>
         </article>
-        <article className="rounded-3xl bg-white p-5 shadow-pill">
+        <article className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
           <h3 className="text-xl font-black text-lbc-ink">Actividad reciente</h3>
           <div className="mt-5 space-y-3">
             {data.groups.slice(0, 4).map((group) => (

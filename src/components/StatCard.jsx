@@ -7,11 +7,11 @@ export default function StatCard({ icon: Icon, label, value, detail, tone = 'red
   };
 
   return (
-    <article className="rounded-2xl bg-lbc-blue p-4 text-white shadow-soft">
+    <article className="rounded-2xl bg-lbc-blue p-3 text-white shadow-soft md:p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-semibold text-white/75">{label}</p>
-          <p className="mt-1.5 text-2xl font-black text-white">{value}</p>
+          <p className="mt-1 text-xl font-black text-white md:text-2xl">{value}</p>
           {detail && <p className="mt-2 text-sm leading-5 text-white/70">{detail}</p>}
         </div>
         {Icon && (

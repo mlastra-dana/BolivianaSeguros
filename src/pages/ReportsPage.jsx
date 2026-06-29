@@ -13,18 +13,18 @@ export default function ReportsPage({ data }) {
   const ranked = [...data.groups].sort((a, b) => b.memberCount - a.memberCount);
 
   return (
-    <div className="space-y-6">
-      <section className="rounded-3xl bg-white p-6 shadow-pill">
-        <h2 className="text-4xl font-black text-lbc-ink">Reportes</h2>
-        <div className="mt-3 h-1.5 w-24 rounded-full bg-lbc-green" />
+    <div className="min-w-0 space-y-4">
+      <section className="rounded-3xl bg-white p-4 shadow-pill md:p-5">
+        <h2 className="text-2xl font-black text-lbc-ink md:text-3xl">Reportes</h2>
+        <div className="mt-3 h-1 w-16 rounded-full bg-lbc-green" />
       </section>
-      <section className="grid gap-6 xl:grid-cols-2">
+      <section className="grid min-w-0 gap-4 xl:grid-cols-2">
         <ReportCard title="Grupos por tipo de poliza" items={policyGroups} max={Math.max(...policyGroups.map((item) => item.value), 1)} />
         <ReportCard title="Conversion simulada por estado" items={states} max={Math.max(...states.map((item) => item.value), 1)} />
       </section>
-      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <article className="rounded-3xl bg-white p-6 shadow-pill">
-          <h3 className="text-2xl font-black text-lbc-ink">Integrantes por grupo</h3>
+      <section className="grid min-w-0 gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+        <article className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
+          <h3 className="text-xl font-black text-lbc-ink">Integrantes por grupo</h3>
           <div className="mt-5 space-y-4">
             {data.groups.map((group) => (
               <div key={group.id}>
@@ -39,8 +39,8 @@ export default function ReportsPage({ data }) {
             ))}
           </div>
         </article>
-        <article className="rounded-3xl bg-white p-6 shadow-pill">
-          <h3 className="text-2xl font-black text-lbc-ink">Ranking de grupos</h3>
+        <article className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
+          <h3 className="text-xl font-black text-lbc-ink">Ranking de grupos</h3>
           <div className="mt-5 space-y-3">
             {ranked.map((group, index) => (
               <div key={group.id} className="flex items-center justify-between gap-3 rounded-2xl bg-lbc-gray p-4">
@@ -54,9 +54,9 @@ export default function ReportsPage({ data }) {
           </div>
         </article>
       </section>
-      <section className="rounded-3xl bg-white p-6 shadow-pill">
-        <h3 className="text-2xl font-black text-lbc-ink">Afiliaciones recientes</h3>
-        <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <section className="rounded-3xl bg-white p-4 shadow-pill md:p-5">
+        <h3 className="text-xl font-black text-lbc-ink">Afiliaciones recientes</h3>
+        <div className="mt-5 grid min-w-0 gap-3 md:grid-cols-2 xl:grid-cols-3">
           {data.groups.map((group) => (
             <div key={group.id} className="rounded-2xl bg-lbc-gray p-4">
               <p className="font-black text-lbc-ink">{group.name}</p>
@@ -71,8 +71,8 @@ export default function ReportsPage({ data }) {
 
 function ReportCard({ title, items, max }) {
   return (
-    <article className="rounded-3xl bg-white p-6 shadow-pill">
-      <h3 className="text-2xl font-black text-lbc-ink">{title}</h3>
+    <article className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
+      <h3 className="text-xl font-black text-lbc-ink">{title}</h3>
       <div className="mt-5 space-y-4">
         {items.map((item) => (
           <div key={item.label}>

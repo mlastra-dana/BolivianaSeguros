@@ -9,9 +9,14 @@
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background: #f5f7fa;
   color: #102a43;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+#root {
+  min-width: 0;
 }
 
 button,

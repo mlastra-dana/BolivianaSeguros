@@ -51,7 +51,7 @@ export default function GroupFormModal({ brokers, group, onClose, onAddGroup, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4">
-      <form onSubmit={submit} className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-soft">
+      <form onSubmit={submit} className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-4 shadow-soft md:p-6">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-black text-lbc-ink">{isEditing ? 'Editar grupo' : 'Crear grupo'}</h2>
           <button type="button" className="rounded-full p-2 text-slate-500 hover:bg-slate-100" onClick={() => onClose()} aria-label="Cerrar">

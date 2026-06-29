@@ -10,18 +10,16 @@ export default function GroupsPage({ data, onAddGroup }) {
   const [query, setQuery] = useState('');
   const [policy, setPolicy] = useState('Todos');
   const [status, setStatus] = useState('Todos');
-  const [category, setCategory] = useState('Todos');
   const [modalOpen, setModalOpen] = useState(false);
   const [message, setMessage] = useState('');
 
-  const categories = ['Todos', ...new Set(data.groups.map((group) => group.category))];
   const filtered = useMemo(() => {
     const text = query.toLowerCase();
     return data.groups.filter((group) => {
       const matchesText = `${group.name} ${group.description} ${group.location}`.toLowerCase().includes(text);
-      return matchesText && (policy === 'Todos' || group.policyType === policy) && (status === 'Todos' || group.status === status) && (category === 'Todos' || group.category === category);
+      return matchesText && (policy === 'Todos' || group.policyType === policy) && (status === 'Todos' || group.status === status);
     });
-  }, [data.groups, query, policy, status, category]);
+  }, [data.groups, query, policy, status]);
 
   const closeModal = (toast) => {
     setModalOpen(false);
@@ -29,12 +27,12 @@ export default function GroupsPage({ data, onAddGroup }) {
   };
 
   return (
-    <div className="space-y-6">
-      <section className="rounded-3xl bg-white p-6 shadow-pill">
+    <div className="space-y-4">
+      <section className="rounded-3xl bg-white p-4 shadow-pill md:p-5">
         <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
           <div>
-            <h2 className="text-4xl font-black text-lbc-ink">Grupos</h2>
-            <div className="mt-3 h-1.5 w-24 rounded-full bg-lbc-green" />
+            <h2 className="text-2xl font-black text-lbc-ink md:text-3xl">Grupos</h2>
+            <div className="mt-3 h-1 w-16 rounded-full bg-lbc-green" />
           </div>
           <Button onClick={() => setModalOpen(true)}>
             <Plus className="h-4 w-4" />
@@ -42,7 +40,7 @@ export default function GroupsPage({ data, onAddGroup }) {
           </Button>
         </div>
         {message && <div className="mt-4 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700">{message}</div>}
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-5 grid min-w-0 gap-3 md:grid-cols-[minmax(220px,1.2fr)_minmax(180px,0.9fr)_minmax(140px,0.7fr)]">
           <div className="relative">
             <Search className="pointer-events-none absolute left-3 top-3 h-5 w-5 text-slate-400" />
             <Input className="pl-10" placeholder="Buscar por nombre" value={query} onChange={(event) => setQuery(event.target.value)} />
@@ -56,12 +54,9 @@ export default function GroupsPage({ data, onAddGroup }) {
             <option>Activo</option>
             <option>Inactivo</option>
           </select>
-          <select className="h-11 rounded-full border border-slate-200 bg-white px-4 text-sm outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" value={category} onChange={(event) => setCategory(event.target.value)}>
-            {categories.map((item) => <option key={item}>{item}</option>)}
-          </select>
         </div>
       </section>
-      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <section className="grid min-w-0 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((group) => (
           <GroupCard key={group.id} group={group} broker={data.brokers.find((broker) => broker.id === group.brokerId)} />
         ))}

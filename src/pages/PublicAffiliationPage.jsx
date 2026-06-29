@@ -20,31 +20,31 @@ export default function PublicAffiliationPage({ groups }) {
   };
 
   return (
-    <main className="min-h-screen bg-white px-4 py-8 text-lbc-ink md:py-12">
+    <main className="min-h-screen bg-white px-4 py-5 text-lbc-ink md:py-8">
       <div className="mx-auto max-w-5xl">
-        <header className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-full bg-white px-6 py-4 shadow-pill">
+        <header className="mb-5 flex flex-wrap items-center justify-between gap-4 rounded-full bg-white px-5 py-3 shadow-pill">
           <Link to="/login"><BrandMark compact /></Link>
           <Badge>{group.policyType}</Badge>
         </header>
-        <section className="grid overflow-hidden rounded-3xl bg-white shadow-pill lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="bg-lbc-blue p-8 text-white md:p-10">
+        <section className="grid min-w-0 overflow-hidden rounded-3xl bg-white shadow-pill lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+          <div className="bg-lbc-blue p-5 text-white md:p-7">
             <ShieldCheck className="h-10 w-10 text-white" />
-            <h1 className="mt-5 text-4xl font-black leading-tight">{group.name}</h1>
-            <div className="mt-5 h-1.5 w-24 rounded-full bg-lbc-green" />
-            <p className="mt-6 text-lg font-medium leading-8 text-white/75">{group.policyType}</p>
+            <h1 className="mt-4 text-2xl font-black leading-tight md:text-3xl">{group.name}</h1>
+            <div className="mt-4 h-1 w-16 rounded-full bg-lbc-green" />
+            <p className="mt-4 text-base font-medium leading-7 text-white/75">{group.policyType}</p>
           </div>
-          <div className="p-6 md:p-10">
+          <div className="p-5 md:p-7">
             {sent ? (
               <div className="flex min-h-96 flex-col items-center justify-center text-center">
                 <CheckCircle2 className="h-14 w-14 text-lbc-green" />
-                <h2 className="mt-5 text-3xl font-black text-lbc-ink">Afiliacion registrada</h2>
+                <h2 className="mt-5 text-2xl font-black text-lbc-ink md:text-3xl">Afiliacion registrada</h2>
                 <p className="mt-3 max-w-md text-lbc-blue">Tu afiliacion ha sido registrada exitosamente. Un corredor de La Boliviana Ciacruz podra contactarte para brindarte mas informacion.</p>
               </div>
             ) : (
               <form onSubmit={submit}>
-                <h2 className="text-3xl font-black text-lbc-ink">Formulario de afiliacion</h2>
-                <div className="mt-3 h-1.5 w-20 rounded-full bg-lbc-green" />
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <h2 className="text-2xl font-black text-lbc-ink md:text-3xl">Formulario de afiliacion</h2>
+                <div className="mt-3 h-1 w-16 rounded-full bg-lbc-green" />
+                <div className="mt-5 grid gap-3 md:grid-cols-2">
                   <Input label="Nombre" required />
                   <Input label="Apellidos" required />
                   <Input label="Correo electronico" type="email" required />

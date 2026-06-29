@@ -23,8 +23,8 @@ export default function AppLayout({ onLogout }) {
 
   return (
     <div className="min-h-screen bg-lbc-gray text-lbc-ink">
-      <aside className={`fixed inset-y-0 left-0 z-40 w-60 bg-lbc-blue transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="flex h-20 items-center justify-between border-b border-white/10 px-4">
+      <aside className={`fixed inset-y-0 left-0 z-40 w-56 bg-lbc-blue transition-transform lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="flex h-16 items-center justify-between border-b border-white/10 px-4">
           <Link to="/dashboard" className="min-w-0">
             <BrandMark inverse size="sm" />
           </Link>
@@ -63,21 +63,18 @@ export default function AppLayout({ onLogout }) {
         </div>
       </aside>
 
-      <div className="lg:pl-60">
-        <header className="sticky top-0 z-30 px-4 py-3 md:px-6">
-          <div className="flex min-h-14 items-center justify-between rounded-full bg-white px-4 shadow-pill backdrop-blur md:px-5">
-          <div className="flex min-w-0 items-center gap-3">
-            <button className="rounded-full border border-slate-200 p-2 text-lbc-blue lg:hidden" onClick={() => setOpen(true)} aria-label="Abrir menu">
-              <Menu className="h-5 w-5" />
-            </button>
-            <h1 className="text-lg font-black text-lbc-ink md:text-xl">{sectionTitle}</h1>
-          </div>
-          <div className="hidden rounded-full px-4 py-2 text-sm font-bold text-lbc-ink md:block">
-            Administrador
-          </div>
+      <div className="min-w-0 lg:pl-56">
+        <header className="sticky top-0 z-30 px-3 py-3 lg:hidden">
+          <div className="flex min-h-12 items-center justify-between rounded-full bg-white px-4 shadow-pill backdrop-blur">
+            <div className="flex min-w-0 items-center gap-3">
+              <button className="rounded-full border border-slate-200 p-2 text-lbc-blue" onClick={() => setOpen(true)} aria-label="Abrir menu">
+                <Menu className="h-5 w-5" />
+              </button>
+              <h1 className="truncate text-lg font-black text-lbc-ink">{sectionTitle}</h1>
+            </div>
           </div>
         </header>
-        <main className="p-4 pt-2 md:p-6 md:pt-3">
+        <main className="min-w-0 p-3 pt-3 md:p-4 lg:pt-4">
           <Outlet />
         </main>
       </div>

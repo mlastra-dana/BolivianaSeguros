@@ -40,10 +40,10 @@ export default function MembersTable({ groupId, members, onAddMember, onUpdateMe
   };
 
   return (
-    <section className="rounded-3xl bg-white p-6 shadow-pill">
+    <section className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-2xl font-black text-lbc-ink">Integrantes</h2>
+          <h2 className="text-xl font-black text-lbc-ink">Integrantes</h2>
         </div>
         <Button onClick={openCreateModal}>
           <Plus className="h-4 w-4" />
@@ -57,8 +57,47 @@ export default function MembersTable({ groupId, members, onAddMember, onUpdateMe
           <Input className="pl-10" placeholder="Buscar por nombre, correo o telefono" value={query} onChange={(event) => setQuery(event.target.value)} />
         </div>
       </div>
-      <div className="mt-5 overflow-x-auto">
-        <table className="min-w-full divide-y divide-slate-100 text-left text-sm">
+      <div className="mt-5 grid gap-3 lg:hidden">
+        {filtered.map((member) => (
+          <article key={member.id} className="rounded-2xl border border-slate-100 p-3">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="font-black text-lbc-ink">
+                  {member.firstName} {member.lastName}
+                </p>
+                <p className="mt-1 break-all text-sm text-slate-600">{member.email}</p>
+                <p className="text-sm text-slate-600">{member.phone}</p>
+              </div>
+              <Badge>{member.status}</Badge>
+            </div>
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
+              <span>{member.gender}</span>
+              <span>{member.age} anos</span>
+              <span>{member.joinedAt}</span>
+            </div>
+            <div className="mt-3 flex justify-end gap-2">
+              <button
+                type="button"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-lbc-blue transition hover:border-blue-500 hover:text-blue-600"
+                onClick={() => openEditModal(member)}
+                aria-label={`Editar ${member.firstName} ${member.lastName}`}
+              >
+                <Edit3 className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-red-500 transition hover:border-red-400 hover:bg-red-50"
+                onClick={() => setMemberToDelete(member)}
+                aria-label={`Eliminar ${member.firstName} ${member.lastName}`}
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="mt-5 hidden min-w-0 overflow-x-auto lg:block">
+        <table className="min-w-[760px] divide-y divide-slate-100 text-left text-sm">
           <thead className="bg-lbc-gray text-xs font-bold uppercase text-lbc-blue">
             <tr>
               <th className="px-4 py-3">Nombre</th>
@@ -107,8 +146,8 @@ export default function MembersTable({ groupId, members, onAddMember, onUpdateMe
             ))}
           </tbody>
         </table>
-        {filtered.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No se encontraron integrantes con esos criterios.</p>}
       </div>
+      {filtered.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No se encontraron integrantes con esos criterios.</p>}
       {modalOpen && (
         <MemberFormModal
           groupId={groupId}
