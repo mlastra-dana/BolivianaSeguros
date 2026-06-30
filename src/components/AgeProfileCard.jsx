@@ -26,35 +26,25 @@ export default function AgeProfileCard({ members }) {
 
   return (
     <article className="rounded-3xl bg-white p-4 shadow-pill md:p-5">
-      <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h2 className="text-xl font-black text-lbc-ink">Perfilamiento agregado</h2>
-          <p className="mt-1 text-sm font-semibold text-lbc-blue/70">Suscritos vs. base por rango de edad</p>
-        </div>
-        <p className="text-sm font-bold text-slate-400">{members.length} registros visibles</p>
-      </div>
+      <h2 className="text-2xl font-black text-lbc-ink">Perfilamiento agregado: suscritos vs base</h2>
 
       <div className="mt-4 overflow-x-auto">
-        <table className="min-w-[620px] w-full border-separate border-spacing-y-2 text-left text-sm">
-          <thead className="text-xs font-black uppercase text-lbc-blue/55">
+        <table className="w-full min-w-[620px] border-separate border-spacing-y-3 text-left text-sm">
+          <thead className="text-base font-black text-lbc-blue/70">
             <tr>
-              <th className="px-4 py-2">Segmento</th>
-              <th className="px-4 py-2">Base</th>
-              <th className="px-4 py-2">Suscritos</th>
-              <th className="px-4 py-2">Señal</th>
+              <th className="px-5 pb-2">Segmento</th>
+              <th className="px-5 pb-2">Base</th>
+              <th className="px-5 pb-2">Suscritos</th>
+              <th className="px-5 pb-2">Señal</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.label} className="bg-white shadow-[0_0_0_1px_rgba(226,232,240,1)]">
-                <td className="rounded-l-2xl px-4 py-3 font-black text-lbc-ink">{row.label}</td>
-                <td className="px-4 py-3 font-semibold text-lbc-blue">{row.base}%</td>
-                <td className="px-4 py-3 font-semibold text-lbc-blue">{row.subscribed}%</td>
-                <td className="rounded-r-2xl px-4 py-3">
-                  <span className={`inline-flex rounded-full px-3 py-1 text-xs font-black ${signalStyles[row.signal]}`}>
-                    {row.signal}
-                  </span>
-                </td>
+              <tr key={row.label}>
+                <td className="rounded-l-3xl border-y border-l border-slate-200 px-5 py-4 font-black text-lbc-ink">{row.label}</td>
+                <td className="border-y border-slate-200 px-5 py-4 text-lbc-blue">{row.base}%</td>
+                <td className="border-y border-slate-200 px-5 py-4 text-lbc-blue">{row.subscribed}%</td>
+                <td className="rounded-r-3xl border-y border-r border-slate-200 px-5 py-4 text-lbc-blue">{row.signal}</td>
               </tr>
             ))}
           </tbody>
@@ -63,13 +53,6 @@ export default function AgeProfileCard({ members }) {
     </article>
   );
 }
-
-const signalStyles = {
-  Balanceado: 'bg-emerald-50 text-emerald-700',
-  'Sub-representado': 'bg-amber-50 text-amber-700',
-  Vigilar: 'bg-blue-50 text-blue-700',
-  Oportunidad: 'bg-indigo-50 text-indigo-700',
-};
 
 function isInSegment(age, segment) {
   return age >= segment.min && age <= segment.max;

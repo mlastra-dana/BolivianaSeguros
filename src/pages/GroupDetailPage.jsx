@@ -86,7 +86,6 @@ export default function GroupDetailPage({ data, onUpdateGroup, onToggleGroupStat
           <Info icon={ShieldCheck} label="Corredor responsable" value={broker?.name || 'Sin asignar'} />
         </div>
       </section>
-      <AgeProfileCard members={members} />
       <section className="grid min-w-0 gap-4 xl:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)]">
         <div className="min-w-0 space-y-4">
           <QRCard group={group} onCopy={showToast} />
@@ -101,6 +100,7 @@ export default function GroupDetailPage({ data, onUpdateGroup, onToggleGroupStat
           onDeleteMember={onDeleteMember}
         />
       </section>
+      <AgeProfileCard members={members} />
       {editOpen && (
         <GroupFormModal
           brokers={data.brokers}

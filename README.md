@@ -32,7 +32,7 @@ El alcance incluye:
 - Pantalla de inicio con accesos rápidos y actividad reciente.
 - Módulo de grupos con búsqueda, filtros y creación simulada.
 - Detalle de grupo con información comercial, estado, póliza, ubicación y corredor responsable.
-- Perfilamiento agregado por rango de edad para comparar suscritos vs. base.
+- Perfilamiento agregado por rango de edad para comparar suscritos vs base.
 - Administración de miembros por grupo: registrar, editar, eliminar, consultar y buscar.
 - QR real generado en frontend para el enlace mock de afiliación.
 - Formulario público de afiliación asociado a cada grupo.
@@ -110,7 +110,11 @@ También permite editar, desactivar, activar o eliminar el grupo de manera simul
 
 ### Perfilamiento agregado
 
-Cada detalle de grupo incluye una lectura agregada de sus miembros por rango de edad. Esta vista compara la composición de la base visible contra los miembros afiliados y muestra una señal comercial para cada segmento:
+Cada detalle de grupo incluye una lectura agregada de sus miembros por rango de edad. En esta demo, la vista se calcula con los miembros cargados para el grupo seleccionado en `src/data/mockData.js`; no usa datos externos ni el conteo total comercial del grupo.
+
+La tabla compara la composición de la base registrada contra los suscritos. En esta demo, los suscritos corresponden a miembros con estado `Afiliado`.
+
+La vista muestra una señal comercial para cada segmento:
 
 - Balanceado.
 - Sub-representado.
