@@ -1,6 +1,7 @@
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, CalendarDays, Edit3, MapPin, Power, ShieldCheck, Trash2, UsersRound, X } from 'lucide-react';
 import { useState } from 'react';
+import AgeProfileCard from '../components/AgeProfileCard.jsx';
 import Badge from '../components/Badge.jsx';
 import BrokerCard from '../components/BrokerCard.jsx';
 import Button from '../components/Button.jsx';
@@ -85,6 +86,7 @@ export default function GroupDetailPage({ data, onUpdateGroup, onToggleGroupStat
           <Info icon={ShieldCheck} label="Corredor responsable" value={broker?.name || 'Sin asignar'} />
         </div>
       </section>
+      <AgeProfileCard members={members} />
       <section className="grid min-w-0 gap-4 xl:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)]">
         <div className="min-w-0 space-y-4">
           <QRCard group={group} onCopy={showToast} />

@@ -130,15 +130,17 @@ const baseMembers = [
   ['Carla', 'Mendoza', 'carla.mendoza@email.com', '+591 700 10015', 'Femenino', 38, 'Afiliado'],
   ['Rodrigo', 'Salazar', 'rodrigo.salazar@email.com', '+591 700 10016', 'Masculino', 32, 'Registrado'],
   ['Daniela', 'Vaca', 'daniela.vaca@email.com', '+591 700 10017', 'Femenino', 45, 'Contactado'],
-  ['Pablo', 'Rivera', 'pablo.rivera@email.com', '+591 700 10018', 'Masculino', 36, 'En seguimiento'],
+  ['Pablo', 'Rivera', 'pablo.rivera@email.com', '+591 700 10018', 'Masculino', 66, 'En seguimiento'],
   ['Sofía', 'Montaño', 'sofia.montano@email.com', '+591 700 10019', 'Femenino', 27, 'Registrado'],
-  ['Fernando', 'Roca', 'fernando.roca@email.com', '+591 700 10020', 'Masculino', 52, 'Afiliado'],
+  ['Fernando', 'Roca', 'fernando.roca@email.com', '+591 700 10020', 'Masculino', 58, 'Afiliado'],
+  ['Roxana', 'López', 'roxana.lopez@email.com', '+591 700 10021', 'Femenino', 61, 'Afiliado'],
+  ['Hugo', 'Paredes', 'hugo.paredes@email.com', '+591 700 10022', 'Masculino', 69, 'Contactado'],
 ];
 
 export const membersByGroup = Object.fromEntries(
   groups.map((group, groupIndex) => [
     group.id,
-    baseMembers.slice(0, 5 + (groupIndex % 4)).map((member, memberIndex) => ({
+    baseMembers.slice(0, 7 + (groupIndex % 5)).map((member, memberIndex) => ({
       id: `${group.id}-m-${memberIndex + 1}`,
       firstName: member[0],
       lastName: member[1],
