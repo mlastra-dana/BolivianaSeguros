@@ -23,7 +23,7 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
   const displayTotal = totalMembers || members.length;
   const summary = query
     ? `${visibleMembers.length} resultado${visibleMembers.length === 1 ? '' : 's'} encontrados`
-    : `Ultimos ${Math.min(PREVIEW_LIMIT, members.length)} registros de ${displayTotal} miembros`;
+    : `Últimos ${Math.min(PREVIEW_LIMIT, members.length)} registros de ${displayTotal} miembros`;
 
   const closeModal = (toast) => {
     setModalOpen(false);
@@ -44,14 +44,14 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
   const confirmDelete = () => {
     onDeleteMember(groupId, memberToDelete.id);
     setMemberToDelete(null);
-    setMessage('Integrante eliminado correctamente.');
+    setMessage('Miembro eliminado correctamente.');
   };
 
   return (
     <section className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-xl font-black text-lbc-ink">Ultimos miembros registrados</h2>
+          <h2 className="text-xl font-black text-lbc-ink">Últimos miembros registrados</h2>
           <p className="mt-1 text-sm font-semibold text-lbc-blue/70">{summary}</p>
         </div>
         <Button onClick={openCreateModal}>
@@ -63,7 +63,7 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
       <div className="mt-5 max-w-md">
         <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-3 h-5 w-5 text-slate-400" />
-          <Input className="pl-10" placeholder="Buscar por nombre, correo o telefono" value={query} onChange={(event) => setQuery(event.target.value)} />
+          <Input className="pl-10" placeholder="Buscar por nombre, correo o teléfono" value={query} onChange={(event) => setQuery(event.target.value)} />
         </div>
       </div>
       <div className="mt-5 grid gap-3 lg:hidden">
@@ -81,7 +81,7 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
             </div>
             <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm text-slate-500">
               <span>{member.gender}</span>
-              <span>{member.age} anos</span>
+              <span>{member.age} años</span>
               <span>{member.joinedAt}</span>
             </div>
             <div className="mt-3 flex justify-end gap-2">
@@ -111,10 +111,10 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
             <tr>
               <th className="px-4 py-3">Nombre</th>
               <th className="px-4 py-3">Correo</th>
-              <th className="px-4 py-3">Telefono</th>
-              <th className="px-4 py-3">Genero</th>
+              <th className="px-4 py-3">Teléfono</th>
+              <th className="px-4 py-3">Género</th>
               <th className="px-4 py-3">Edad</th>
-              <th className="px-4 py-3">Afiliacion</th>
+              <th className="px-4 py-3">Afiliación</th>
               <th className="px-4 py-3">Estado</th>
               <th className="px-4 py-3 text-right">Acciones</th>
             </tr>

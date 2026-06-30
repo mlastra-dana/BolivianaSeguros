@@ -16,7 +16,7 @@ export default function DashboardPage({ data }) {
       <section className="rounded-3xl bg-white p-4 shadow-pill md:p-5">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-xl font-black text-lbc-ink">Actividad reciente</h2>
-          <span className="text-sm font-bold text-slate-400">Ultimos registros</span>
+          <span className="text-sm font-bold text-slate-400">Últimos registros</span>
         </div>
 
         <div className="mt-4 grid gap-3 lg:grid-cols-2">

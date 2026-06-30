@@ -15,7 +15,7 @@ export const brokers = [
   },
   {
     id: 'valeria-suarez',
-    name: 'Valeria Suarez',
+    name: 'Valeria Suárez',
     email: 'valeria.suarez@lbc.bo',
     phone: '+591 701 56290',
     role: 'Corredor de Seguros',
@@ -34,8 +34,8 @@ export const groups = [
     id: 'g-condominio-las-palmas',
     slug: 'condominio-las-palmas',
     name: 'Condominio Las Palmas',
-    description: 'Comunidad residencial con programa de proteccion patrimonial para propietarios e inquilinos.',
-    category: 'Condominio / Urbanizacion',
+    description: 'Comunidad residencial con programa de protección patrimonial para propietarios e inquilinos.',
+    category: 'Condominio / Urbanización',
     policyType: 'Seguro de Hogar',
     location: 'Santa Cruz de la Sierra, Bolivia',
     brokerId: 'andrea-vargas',
@@ -49,8 +49,8 @@ export const groups = [
     id: 'g-colegio-san-ignacio',
     slug: 'colegio-san-ignacio',
     name: 'Colegio San Ignacio',
-    description: 'Asociacion educativa que impulsa beneficios aseguradores para familias y personal docente.',
-    category: 'Colegio / Asociacion de Padres',
+    description: 'Asociación educativa que impulsa beneficios aseguradores para familias y personal docente.',
+    category: 'Colegio / Asociación de Padres',
     policyType: 'Seguro de Vida',
     location: 'La Paz, Bolivia',
     brokerId: 'marcelo-rojas',
@@ -64,9 +64,9 @@ export const groups = [
     id: 'g-club-conductores-premium',
     slug: 'club-de-conductores-premium',
     name: 'Club de Conductores Premium',
-    description: 'Comunidad de conductores con beneficios segmentados para proteccion vehicular.',
+    description: 'Comunidad de conductores con beneficios segmentados para protección vehicular.',
     category: 'Comunidad de Conductores',
-    policyType: 'Seguro de Automovil',
+    policyType: 'Seguro de Automóvil',
     location: 'Cochabamba, Bolivia',
     brokerId: 'valeria-suarez',
     status: 'Activo',
@@ -94,7 +94,7 @@ export const groups = [
     id: 'g-vigilancia-segura-srl',
     slug: 'vigilancia-segura-srl',
     name: 'Vigilancia Segura SRL',
-    description: 'Aliado empresarial orientado a servicios de seguridad y proteccion de hogares.',
+    description: 'Aliado empresarial orientado a servicios de seguridad y protección de hogares.',
     category: 'Empresa de Videovigilancia',
     policyType: 'Seguro de Hogar',
     location: 'La Paz, Bolivia',
@@ -108,9 +108,9 @@ export const groups = [
   {
     id: 'g-camara-empresarial-pyme',
     slug: 'camara-empresarial-pyme',
-    name: 'Camara Empresarial PyME',
-    description: 'Asociacion empresarial con plan de accidentes para equipos operativos y administrativos.',
-    category: 'Camara / Asociacion',
+    name: 'Cámara Empresarial PyME',
+    description: 'Asociación empresarial con plan de accidentes para equipos operativos y administrativos.',
+    category: 'Cámara / Asociación',
     policyType: 'Seguro de Accidentes',
     location: 'Cochabamba, Bolivia',
     brokerId: 'marcelo-rojas',
@@ -123,7 +123,7 @@ export const groups = [
 ];
 
 const baseMembers = [
-  ['Maria', 'Fernandez', 'maria.fernandez@email.com', '+591 700 10011', 'Femenino', 34, 'Registrado'],
+  ['María', 'Fernández', 'maria.fernandez@email.com', '+591 700 10011', 'Femenino', 34, 'Registrado'],
   ['Jorge', 'Arias', 'jorge.arias@email.com', '+591 700 10012', 'Masculino', 41, 'Contactado'],
   ['Natalia', 'Quiroga', 'natalia.quiroga@email.com', '+591 700 10013', 'Femenino', 29, 'En seguimiento'],
   ['Luis', 'Camacho', 'luis.camacho@email.com', '+591 700 10014', 'Masculino', 47, 'Afiliado'],
@@ -131,7 +131,7 @@ const baseMembers = [
   ['Rodrigo', 'Salazar', 'rodrigo.salazar@email.com', '+591 700 10016', 'Masculino', 32, 'Registrado'],
   ['Daniela', 'Vaca', 'daniela.vaca@email.com', '+591 700 10017', 'Femenino', 45, 'Contactado'],
   ['Pablo', 'Rivera', 'pablo.rivera@email.com', '+591 700 10018', 'Masculino', 36, 'En seguimiento'],
-  ['Sofia', 'Montano', 'sofia.montano@email.com', '+591 700 10019', 'Femenino', 27, 'Registrado'],
+  ['Sofía', 'Montaño', 'sofia.montano@email.com', '+591 700 10019', 'Femenino', 27, 'Registrado'],
   ['Fernando', 'Roca', 'fernando.roca@email.com', '+591 700 10020', 'Masculino', 52, 'Afiliado'],
 ];
 
@@ -152,4 +152,4 @@ export const membersByGroup = Object.fromEntries(
   ]),
 );
 
-export const policyTypes = ['Seguro de Automovil', 'Seguro de Hogar', 'Seguro de Vida', 'Seguro de Accidentes'];
+export const policyTypes = ['Seguro de Automóvil', 'Seguro de Hogar', 'Seguro de Vida', 'Seguro de Accidentes'];

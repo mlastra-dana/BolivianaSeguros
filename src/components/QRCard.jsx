@@ -30,11 +30,11 @@ export default function QRCard({ group, onCopy }) {
 
   return (
     <article className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
-      <h2 className="text-xl font-black text-lbc-ink">QR de afiliacion</h2>
+      <h2 className="text-xl font-black text-lbc-ink">QR de afiliación</h2>
       <div className="mt-4 flex flex-col items-center">
         <div className="bg-white p-2">
           {qrImage ? (
-            <img src={qrImage} alt={`QR de afiliacion para ${group.name}`} className="h-48 w-48 object-contain md:h-56 md:w-56" />
+            <img src={qrImage} alt={`QR de afiliación para ${group.name}`} className="h-48 w-48 object-contain md:h-56 md:w-56" />
           ) : (
             <div className="h-48 w-48 animate-pulse bg-slate-100 md:h-56 md:w-56" />
           )}
@@ -44,7 +44,7 @@ export default function QRCard({ group, onCopy }) {
       <div className="mt-4 grid gap-2">
         <Button variant="outline" onClick={() => onCopy(url)}>
           <Copy className="h-4 w-4" />
-          Copiar enlace de afiliacion
+          Copiar enlace de afiliación
         </Button>
         <Button variant="outline" onClick={() => onCopy('QR listo para compartir.')}>
           <Download className="h-4 w-4" />
@@ -55,7 +55,7 @@ export default function QRCard({ group, onCopy }) {
           to={`/affiliation/${group.slug}`}
         >
           <ExternalLink className="h-4 w-4" />
-          Ver formulario de afiliacion
+          Ver formulario de afiliación
         </Link>
       </div>
     </article>

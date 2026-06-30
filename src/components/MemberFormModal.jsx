@@ -22,7 +22,7 @@ export default function MemberFormModal({ groupId, member, onClose, onAddMember,
         ...form,
         age: Number(form.age),
       });
-      onClose('Integrante actualizado correctamente.');
+      onClose('Miembro actualizado correctamente.');
       return;
     }
 
@@ -33,7 +33,7 @@ export default function MemberFormModal({ groupId, member, onClose, onAddMember,
       joinedAt: '29/06/2026',
       status: 'Registrado',
     });
-    onClose('Integrante agregado correctamente.');
+    onClose('Miembro agregado correctamente.');
   };
 
   return (
@@ -48,10 +48,10 @@ export default function MemberFormModal({ groupId, member, onClose, onAddMember,
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <Input label="Nombre" required value={form.firstName} onChange={(event) => update('firstName', event.target.value)} />
           <Input label="Apellidos" required value={form.lastName} onChange={(event) => update('lastName', event.target.value)} />
-          <Input label="Correo electronico" type="email" required value={form.email} onChange={(event) => update('email', event.target.value)} />
-          <Input label="Telefono" required value={form.phone} onChange={(event) => update('phone', event.target.value)} />
+          <Input label="Correo electrónico" type="email" required value={form.email} onChange={(event) => update('email', event.target.value)} />
+          <Input label="Teléfono" required value={form.phone} onChange={(event) => update('phone', event.target.value)} />
           <label className="block">
-            <span className="mb-1.5 block text-sm font-semibold text-slate-700">Genero</span>
+            <span className="mb-1.5 block text-sm font-semibold text-slate-700">Género</span>
             <select className="h-11 w-full rounded-full border border-slate-200 bg-white px-4 text-sm outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" value={form.gender} onChange={(event) => update('gender', event.target.value)}>
               <option>Femenino</option>
               <option>Masculino</option>

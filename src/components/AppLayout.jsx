@@ -28,7 +28,7 @@ export default function AppLayout({ onLogout }) {
           <Link to="/dashboard" className="min-w-0">
             <BrandMark inverse size="sm" />
           </Link>
-          <button className="rounded-full p-2 text-white lg:hidden" onClick={() => setOpen(false)} aria-label="Cerrar menu">
+          <button className="rounded-full p-2 text-white lg:hidden" onClick={() => setOpen(false)} aria-label="Cerrar menú">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -67,7 +67,7 @@ export default function AppLayout({ onLogout }) {
         <header className="sticky top-0 z-30 px-3 py-3 lg:hidden">
           <div className="flex min-h-12 items-center justify-between rounded-full bg-white px-4 shadow-pill backdrop-blur">
             <div className="flex min-w-0 items-center gap-3">
-              <button className="rounded-full border border-slate-200 p-2 text-lbc-blue" onClick={() => setOpen(true)} aria-label="Abrir menu">
+              <button className="rounded-full border border-slate-200 p-2 text-lbc-blue" onClick={() => setOpen(true)} aria-label="Abrir menú">
                 <Menu className="h-5 w-5" />
               </button>
               <h1 className="truncate text-lg font-black text-lbc-ink">{sectionTitle}</h1>

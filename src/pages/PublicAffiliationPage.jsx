@@ -37,20 +37,20 @@ export default function PublicAffiliationPage({ groups }) {
             {sent ? (
               <div className="flex min-h-96 flex-col items-center justify-center text-center">
                 <CheckCircle2 className="h-14 w-14 text-lbc-green" />
-                <h2 className="mt-5 text-2xl font-black text-lbc-ink md:text-3xl">Afiliacion registrada</h2>
-                <p className="mt-3 max-w-md text-lbc-blue">Tu afiliacion ha sido registrada exitosamente. Un corredor de La Boliviana Ciacruz podra contactarte para brindarte mas informacion.</p>
+                <h2 className="mt-5 text-2xl font-black text-lbc-ink md:text-3xl">Afiliación registrada</h2>
+                <p className="mt-3 max-w-md text-lbc-blue">Tu afiliación ha sido registrada exitosamente. Un corredor de La Boliviana Ciacruz podrá contactarte para brindarte más información.</p>
               </div>
             ) : (
               <form onSubmit={submit}>
-                <h2 className="text-2xl font-black text-lbc-ink md:text-3xl">Formulario de afiliacion</h2>
+                <h2 className="text-2xl font-black text-lbc-ink md:text-3xl">Formulario de afiliación</h2>
                 <div className="mt-3 h-1 w-16 rounded-full bg-lbc-green" />
                 <div className="mt-5 grid gap-3 md:grid-cols-2">
                   <Input label="Nombre" required />
                   <Input label="Apellidos" required />
-                  <Input label="Correo electronico" type="email" required />
-                  <Input label="Telefono" required />
+                  <Input label="Correo electrónico" type="email" required />
+                  <Input label="Teléfono" required />
                   <label className="block">
-                    <span className="mb-1.5 block text-sm font-semibold text-slate-700">Genero</span>
+                    <span className="mb-1.5 block text-sm font-semibold text-slate-700">Género</span>
                     <select className="h-11 w-full rounded-full border border-slate-200 bg-white px-4 text-sm outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" required>
                       <option>Femenino</option>
                       <option>Masculino</option>
@@ -61,7 +61,7 @@ export default function PublicAffiliationPage({ groups }) {
                 </div>
                 <label className="mt-5 flex items-start gap-3 text-sm text-slate-600">
                   <input className="mt-1 h-4 w-4 accent-blue-600" type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} />
-                  Acepto los terminos de afiliacion y autorizo el contacto comercial de La Boliviana Ciacruz.
+                  Acepto los términos de afiliación y autorizo el contacto comercial de La Boliviana Ciacruz.
                 </label>
                 <Button className="mt-6 w-full" type="submit" disabled={!accepted}>Afiliarme al grupo</Button>
               </form>

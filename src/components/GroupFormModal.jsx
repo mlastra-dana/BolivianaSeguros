@@ -60,9 +60,9 @@ export default function GroupFormModal({ brokers, group, onClose, onAddGroup, on
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <Input label="Nombre del grupo" required value={form.name} onChange={(event) => update('name', event.target.value)} />
-          <Input label="Categoria" required value={form.category} onChange={(event) => update('category', event.target.value)} />
+          <Input label="Categoría" required value={form.category} onChange={(event) => update('category', event.target.value)} />
           <label className="block md:col-span-2">
-            <span className="mb-1.5 block text-sm font-semibold text-slate-700">Descripcion</span>
+            <span className="mb-1.5 block text-sm font-semibold text-slate-700">Descripción</span>
             <textarea
               className="min-h-24 w-full rounded-3xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
               required
@@ -71,12 +71,12 @@ export default function GroupFormModal({ brokers, group, onClose, onAddGroup, on
             />
           </label>
           <label className="block">
-            <span className="mb-1.5 block text-sm font-semibold text-slate-700">Tipo de poliza asociada</span>
+            <span className="mb-1.5 block text-sm font-semibold text-slate-700">Tipo de póliza asociada</span>
             <select className="h-11 w-full rounded-full border border-slate-200 bg-white px-4 text-sm outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" value={form.policyType} onChange={(event) => update('policyType', event.target.value)}>
               {policyTypes.map((type) => <option key={type}>{type}</option>)}
             </select>
           </label>
-          <Input label="Ubicacion" required value={form.location} onChange={(event) => update('location', event.target.value)} />
+          <Input label="Ubicación" required value={form.location} onChange={(event) => update('location', event.target.value)} />
           <label className="block">
             <span className="mb-1.5 block text-sm font-semibold text-slate-700">Estado</span>
             <select className="h-11 w-full rounded-full border border-slate-200 bg-white px-4 text-sm outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100" value={form.status} onChange={(event) => update('status', event.target.value)}>

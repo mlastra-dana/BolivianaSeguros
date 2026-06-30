@@ -6,7 +6,7 @@ const styles = {
   'En seguimiento': 'bg-indigo-50 text-indigo-700 ring-indigo-100',
   Afiliado: 'bg-emerald-50 text-emerald-700 ring-emerald-100',
   'Seguro de Hogar': 'bg-blue-50 text-blue-700 ring-blue-100',
-  'Seguro de Automovil': 'bg-red-50 text-red-700 ring-red-100',
+  'Seguro de Automóvil': 'bg-red-50 text-red-700 ring-red-100',
   'Seguro de Vida': 'bg-purple-50 text-purple-700 ring-purple-100',
   'Seguro de Accidentes': 'bg-orange-50 text-orange-700 ring-orange-100',
 };

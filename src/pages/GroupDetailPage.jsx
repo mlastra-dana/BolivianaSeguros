@@ -75,13 +75,13 @@ export default function GroupDetailPage({ data, onUpdateGroup, onToggleGroupStat
           </div>
         </div>
         <div className="mt-5 grid min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          <Info icon={ShieldCheck} label="Categoria" value={group.category} />
-          <Info icon={ShieldCheck} label="Poliza asociada" value={group.policyType} />
-          <Info icon={CalendarDays} label="Fecha de creacion" value={group.createdAt} />
+          <Info icon={ShieldCheck} label="Categoría" value={group.category} />
+          <Info icon={ShieldCheck} label="Póliza asociada" value={group.policyType} />
+          <Info icon={CalendarDays} label="Fecha de creación" value={group.createdAt} />
           <Info icon={UsersRound} label="Miembros" value={group.memberCount} />
         </div>
         <div className="mt-3 grid min-w-0 gap-3 md:grid-cols-2">
-          <Info icon={MapPin} label="Ubicacion" value={group.location} href={mapsUrl} />
+          <Info icon={MapPin} label="Ubicación" value={group.location} href={mapsUrl} />
           <Info icon={ShieldCheck} label="Corredor responsable" value={broker?.name || 'Sin asignar'} />
         </div>
       </section>
@@ -161,7 +161,7 @@ function ToastListener() {
     window.addEventListener('lbc-toast', (event) => {
       const zone = document.getElementById(id);
       if (!zone) return;
-      zone.textContent = event.detail.includes('https') ? 'Enlace de afiliacion copiado visualmente.' : event.detail;
+      zone.textContent = event.detail.includes('https') ? 'Enlace de afiliación copiado visualmente.' : event.detail;
       zone.classList.remove('hidden');
       window.setTimeout(() => zone.classList.add('hidden'), 2600);
     });

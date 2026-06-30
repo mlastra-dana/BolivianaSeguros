@@ -31,7 +31,7 @@ export default function LoginPage({ onLogin }) {
   const submit = (event) => {
     event.preventDefault();
     if (!email.trim() || !password.trim()) {
-      setMessage('Completa usuario y contrasena para continuar.');
+      setMessage('Completa usuario y contraseña para continuar.');
       return;
     }
     onLogin();
@@ -54,7 +54,7 @@ export default function LoginPage({ onLogin }) {
           <div className="flex justify-center">
             <BrandMark size="xl" />
           </div>
-          <div className="hidden justify-center text-lg font-bold text-lbc-blue md:flex">Asegurate en linea</div>
+          <div className="hidden justify-center text-lg font-bold text-lbc-blue md:flex">Asegúrate en línea</div>
           <div className="hidden justify-end text-lg font-bold text-lbc-blue md:flex">Sobre nosotros</div>
         </header>
 
@@ -67,12 +67,12 @@ export default function LoginPage({ onLogin }) {
               </div>
               <div className="space-y-4">
                 <Input label="Usuario" type="text" value={email} onChange={(event) => setEmail(event.target.value)} placeholder={ACCESS_USER} />
-                <Input label="Contrasena" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder={ACCESS_PASSWORD} />
+                <Input label="Contraseña" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder={ACCESS_PASSWORD} />
               </div>
               <div className="mt-5 rounded-2xl bg-lbc-gray p-4 text-sm text-lbc-blue">
                 <p className="font-black text-lbc-ink">Credenciales</p>
                 <p>Usuario: {ACCESS_USER}</p>
-                <p>Contrasena: {ACCESS_PASSWORD}</p>
+                <p>Contraseña: {ACCESS_PASSWORD}</p>
               </div>
               {message && <div className="mt-4 rounded-2xl bg-blue-50 px-4 py-3 text-sm font-bold text-blue-700">{message}</div>}
               <div className="mt-6 grid gap-3 sm:grid-cols-2">

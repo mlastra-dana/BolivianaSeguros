@@ -17,7 +17,7 @@ export default function ReportsPage({ data }) {
   const maxAffiliations = Math.max(...data.groups.map((group) => group.monthAffiliations), 1);
   const loadedMembers = Object.values(data.membersByGroup).flat();
 
-  const policies = ['Seguro de Hogar', 'Seguro de Automovil', 'Seguro de Vida', 'Seguro de Accidentes']
+  const policies = ['Seguro de Hogar', 'Seguro de Automóvil', 'Seguro de Vida', 'Seguro de Accidentes']
     .map((policy, index) => ({
       label: policy.replace('Seguro de ', ''),
       value: data.groups.filter((group) => group.policyType === policy).length,
@@ -39,11 +39,11 @@ export default function ReportsPage({ data }) {
         <Kpi icon={UsersRound} label="Miembros" value={formatNumber(totalMembers)} />
         <Kpi icon={BarChart3} label="Grupos activos" value={activeGroups} />
         <Kpi icon={TrendingUp} label="Afiliaciones" value={monthAffiliations} />
-        <Kpi icon={Target} label="Conversion" value={`${conversion}%`} />
+        <Kpi icon={Target} label="Conversión" value={`${conversion}%`} />
       </section>
 
       <section className="grid gap-3 xl:grid-cols-12">
-        <Panel title="Mix de polizas" className="xl:col-span-3">
+        <Panel title="Mix de pólizas" className="xl:col-span-3">
           <div className="flex items-center gap-4">
             <Donut items={policies} total={data.groups.length} />
             <div className="min-w-0 flex-1 space-y-2">
@@ -182,5 +182,5 @@ function shortName(name) {
     .replace('Condominio ', '')
     .replace('Colegio ', '')
     .replace('Club de ', '')
-    .replace('Camara ', '');
+    .replace('Cámara ', '');
 }
