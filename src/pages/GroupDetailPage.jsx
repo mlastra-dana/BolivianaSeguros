@@ -78,7 +78,7 @@ export default function GroupDetailPage({ data, onUpdateGroup, onToggleGroupStat
           <Info icon={ShieldCheck} label="Categoria" value={group.category} />
           <Info icon={ShieldCheck} label="Poliza asociada" value={group.policyType} />
           <Info icon={CalendarDays} label="Fecha de creacion" value={group.createdAt} />
-          <Info icon={UsersRound} label="Integrantes" value={group.memberCount} />
+          <Info icon={UsersRound} label="Miembros" value={group.memberCount} />
         </div>
         <div className="mt-3 grid min-w-0 gap-3 md:grid-cols-2">
           <Info icon={MapPin} label="Ubicacion" value={group.location} href={mapsUrl} />

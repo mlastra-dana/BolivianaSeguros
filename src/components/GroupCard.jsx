@@ -18,7 +18,7 @@ export default function GroupCard({ group, broker }) {
       <dl className="mt-auto min-h-6 text-sm text-white/75">
         <div className="flex items-center gap-2">
           <UserRound className="h-4 w-4 shrink-0 text-white" />
-          <span className="truncate">{broker?.name} · {group.memberCount} integrantes</span>
+          <span className="truncate">{broker?.name} · {group.memberCount} miembros</span>
         </div>
       </dl>
       <Link

@@ -5,13 +5,13 @@ import BrandMark from './BrandMark.jsx';
 import Button from './Button.jsx';
 
 const navItems = [
-  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/dashboard', label: 'Inicio', icon: LayoutDashboard },
   { to: '/groups', label: 'Grupos', icon: UsersRound },
   { to: '/reports', label: 'Reportes', icon: BarChart3 },
 ];
 
 const titles = {
-  '/dashboard': 'Dashboard',
+  '/dashboard': 'Inicio',
   '/groups': 'Grupos',
   '/reports': 'Reportes',
 };

@@ -40,7 +40,7 @@ export default function MemberFormModal({ groupId, member, onClose, onAddMember,
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4">
       <form onSubmit={submit} className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-4 shadow-soft md:p-6">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-black text-lbc-ink">{isEditing ? 'Editar integrante' : 'Agregar integrante'}</h2>
+          <h2 className="text-2xl font-black text-lbc-ink">{isEditing ? 'Editar miembro' : 'Agregar miembro'}</h2>
           <button type="button" className="rounded-full p-2 text-slate-500 hover:bg-slate-100" onClick={() => onClose()} aria-label="Cerrar">
             <X className="h-5 w-5" />
           </button>
@@ -62,7 +62,7 @@ export default function MemberFormModal({ groupId, member, onClose, onAddMember,
         </div>
         <div className="mt-6 flex justify-end gap-3">
           <Button type="button" variant="outline" onClick={() => onClose()}>Cancelar</Button>
-          <Button type="submit">{isEditing ? 'Guardar cambios' : 'Agregar integrante'}</Button>
+          <Button type="submit">{isEditing ? 'Guardar cambios' : 'Agregar miembro'}</Button>
         </div>
       </form>
     </div>

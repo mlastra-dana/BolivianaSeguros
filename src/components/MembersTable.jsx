@@ -23,7 +23,7 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
   const displayTotal = totalMembers || members.length;
   const summary = query
     ? `${visibleMembers.length} resultado${visibleMembers.length === 1 ? '' : 's'} encontrados`
-    : `Ultimos ${Math.min(PREVIEW_LIMIT, members.length)} registros de ${displayTotal} integrantes`;
+    : `Ultimos ${Math.min(PREVIEW_LIMIT, members.length)} registros de ${displayTotal} miembros`;
 
   const closeModal = (toast) => {
     setModalOpen(false);
@@ -51,12 +51,12 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
     <section className="min-w-0 rounded-3xl bg-white p-4 shadow-pill md:p-5">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-xl font-black text-lbc-ink">Ultimos integrantes registrados</h2>
+          <h2 className="text-xl font-black text-lbc-ink">Ultimos miembros registrados</h2>
           <p className="mt-1 text-sm font-semibold text-lbc-blue/70">{summary}</p>
         </div>
         <Button onClick={openCreateModal}>
           <Plus className="h-4 w-4" />
-          Agregar integrante
+          Agregar miembro
         </Button>
       </div>
       {message && <div className="mt-4 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700">{message}</div>}
@@ -156,7 +156,7 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
           </tbody>
         </table>
       </div>
-      {visibleMembers.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No se encontraron integrantes con esos criterios.</p>}
+      {visibleMembers.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No se encontraron miembros con esos criterios.</p>}
       {modalOpen && (
         <MemberFormModal
           groupId={groupId}
@@ -171,7 +171,7 @@ export default function MembersTable({ groupId, members, totalMembers, onAddMemb
           <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-soft">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-2xl font-black text-lbc-ink">Eliminar integrante</h2>
+                <h2 className="text-2xl font-black text-lbc-ink">Eliminar miembro</h2>
                 <p className="mt-2 text-sm text-slate-600">
                   {memberToDelete.firstName} {memberToDelete.lastName}
                 </p>

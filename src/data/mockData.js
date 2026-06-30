@@ -125,14 +125,14 @@ export const groups = [
 const baseMembers = [
   ['Maria', 'Fernandez', 'maria.fernandez@email.com', '+591 700 10011', 'Femenino', 34, 'Registrado'],
   ['Jorge', 'Arias', 'jorge.arias@email.com', '+591 700 10012', 'Masculino', 41, 'Contactado'],
-  ['Natalia', 'Quiroga', 'natalia.quiroga@email.com', '+591 700 10013', 'Femenino', 29, 'Interesado'],
-  ['Luis', 'Camacho', 'luis.camacho@email.com', '+591 700 10014', 'Masculino', 47, 'Convertido'],
-  ['Carla', 'Mendoza', 'carla.mendoza@email.com', '+591 700 10015', 'Femenino', 38, 'Convertido'],
+  ['Natalia', 'Quiroga', 'natalia.quiroga@email.com', '+591 700 10013', 'Femenino', 29, 'En seguimiento'],
+  ['Luis', 'Camacho', 'luis.camacho@email.com', '+591 700 10014', 'Masculino', 47, 'Afiliado'],
+  ['Carla', 'Mendoza', 'carla.mendoza@email.com', '+591 700 10015', 'Femenino', 38, 'Afiliado'],
   ['Rodrigo', 'Salazar', 'rodrigo.salazar@email.com', '+591 700 10016', 'Masculino', 32, 'Registrado'],
   ['Daniela', 'Vaca', 'daniela.vaca@email.com', '+591 700 10017', 'Femenino', 45, 'Contactado'],
-  ['Pablo', 'Rivera', 'pablo.rivera@email.com', '+591 700 10018', 'Masculino', 36, 'Interesado'],
+  ['Pablo', 'Rivera', 'pablo.rivera@email.com', '+591 700 10018', 'Masculino', 36, 'En seguimiento'],
   ['Sofia', 'Montano', 'sofia.montano@email.com', '+591 700 10019', 'Femenino', 27, 'Registrado'],
-  ['Fernando', 'Roca', 'fernando.roca@email.com', '+591 700 10020', 'Masculino', 52, 'Convertido'],
+  ['Fernando', 'Roca', 'fernando.roca@email.com', '+591 700 10020', 'Masculino', 52, 'Afiliado'],
 ];
 
 export const membersByGroup = Object.fromEntries(

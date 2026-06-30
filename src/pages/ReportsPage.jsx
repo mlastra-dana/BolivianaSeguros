@@ -25,7 +25,7 @@ export default function ReportsPage({ data }) {
     }))
     .filter((item) => item.value > 0);
 
-  const funnel = ['Registrado', 'Contactado', 'Interesado', 'Convertido'].map((status, index) => ({
+  const funnel = ['Registrado', 'Contactado', 'En seguimiento', 'Afiliado'].map((status, index) => ({
     label: status,
     value: loadedMembers.filter((member) => member.status === status).length,
     color: chartColors[index],
@@ -36,7 +36,7 @@ export default function ReportsPage({ data }) {
   return (
     <div className="min-w-0 space-y-3">
       <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <Kpi icon={UsersRound} label="Integrantes" value={formatNumber(totalMembers)} />
+        <Kpi icon={UsersRound} label="Miembros" value={formatNumber(totalMembers)} />
         <Kpi icon={BarChart3} label="Grupos activos" value={activeGroups} />
         <Kpi icon={TrendingUp} label="Afiliaciones" value={monthAffiliations} />
         <Kpi icon={Target} label="Conversion" value={`${conversion}%`} />
@@ -113,7 +113,7 @@ export default function ReportsPage({ data }) {
                 <span className="grid h-7 w-7 place-items-center rounded-full text-xs font-black text-white" style={{ backgroundColor: LBC_BLUE }}>{index + 1}</span>
                 <div className="min-w-0">
                   <p className="truncate text-sm font-black" style={{ color: LBC_DARK }}>{group.name}</p>
-                  <p className="text-xs font-bold text-slate-500">{group.memberCount} integrantes</p>
+                  <p className="text-xs font-bold text-slate-500">{group.memberCount} miembros</p>
                 </div>
                 <span className="text-sm font-black" style={{ color: LBC_GREEN }}>{group.conversion}%</span>
               </div>
